@@ -275,3 +275,53 @@ color-app
             └─ page.jsx
 
 ```
+```
+color-app
+├─ AGENTS.md
+├─ CLAUDE.md
+├─ jsconfig.json
+├─ next.config.mjs
+├─ package-lock.json
+├─ package.json
+├─ postcss.config.mjs
+├─ public
+│  ├─ file.svg
+│  ├─ globe.svg
+│  ├─ next.svg
+│  ├─ vercel.svg
+│  └─ window.svg
+├─ README.md
+└─ src
+   └─ app
+      ├─ about
+      │  └─ page.jsx
+      ├─ activities
+      │  └─ page.jsx
+      ├─ components
+      │  ├─ Footer.jsx
+      │  ├─ Navbar.jsx
+      │  └─ ThemeToggle.jsx
+      ├─ contact
+      │  └─ page.jsx
+      ├─ data
+      │  └─ colorsData.jsx
+      ├─ exam
+      │  └─ page.jsx
+      ├─ favicon.ico
+      ├─ globals.css
+      ├─ layout.js
+      ├─ page.jsx
+      └─ topics
+         ├─ color-meanings
+         │  └─ page.jsx
+         ├─ color-mistakes
+         │  └─ page.jsx
+         ├─ color-wheel
+         │  └─ page.jsx
+         ├─ colors-in-design
+         │  └─ page.jsx
+         ├─ page.jsx
+         └─ what-are-colors
+            └─ page.jsx
+
+```

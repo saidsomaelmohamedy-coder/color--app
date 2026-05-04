@@ -14,6 +14,12 @@ export const metadata = {
     "موقع تعليمي تفاعلي لذوي صعوبات التعلم حول الألوان ودلالتها في التصميم الجرافيكي.",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
@@ -29,6 +35,7 @@ export default function RootLayout({ children }) {
                     document.documentElement.classList.add("dark");
                   } else {
                     document.documentElement.classList.remove("dark");
+                    localStorage.setItem("theme", "light");
                   }
                 } catch (error) {}
               })();
@@ -38,7 +45,7 @@ export default function RootLayout({ children }) {
       </head>
 
       <body className={cairo.className}>
-        <div className="flex min-h-screen flex-col">
+        <div className="flex min-h-screen flex-col overflow-x-hidden">
           <Navbar />
 
           <main className="flex-1">{children}</main>

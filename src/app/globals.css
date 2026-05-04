@@ -443,3 +443,213 @@ button {
 .dark textarea::placeholder {
   color: #cbd5e1;
 }
+/* =========================
+   Mobile Professional Responsive Fix
+   لا يغير المحتوى - فقط يحسن العرض على الموبايل
+========================= */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+}
+
+.page-container {
+  width: min(1180px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    width: min(100% - 20px, 100%);
+  }
+
+  section {
+    padding-block: 28px;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 1.35;
+  }
+
+  .section-title {
+    font-size: clamp(1.7rem, 8vw, 2.5rem);
+    line-height: 1.4;
+  }
+
+  .glass,
+  .glass-strong,
+  .media-card {
+    border-radius: 1.6rem;
+  }
+
+  .main-btn,
+  .soft-btn {
+    width: 100%;
+    min-height: 50px;
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+
+  .badge,
+  .chip,
+  .pill,
+  .tag {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.9;
+  }
+
+  .grid {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-container {
+    width: min(100% - 16px, 100%);
+  }
+
+  .main-btn,
+  .soft-btn {
+    font-size: 14px;
+  }
+
+  .badge,
+  .chip,
+  .pill,
+  .tag {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+/* =========================
+   Professional Dark Mode Visibility
+   يخلي الليلي واضح بدون تغيير شكل الصفحات
+========================= */
+
+.dark body {
+  color: #ffffff;
+}
+
+.dark .glass,
+.dark .glass-strong,
+.dark .media-card {
+  background: rgba(15, 23, 42, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: #ffffff !important;
+}
+
+.dark p,
+.dark li {
+  color: #e2e8f0;
+}
+
+.dark .text-muted {
+  color: #dbeafe !important;
+}
+
+.dark .text-slate-950,
+.dark .text-slate-900,
+.dark .text-slate-800,
+.dark .text-slate-700,
+.dark .text-slate-600,
+.dark .text-slate-500,
+.dark .text-slate-400 {
+  color: #f8fafc !important;
+}
+
+.dark .text-black {
+  color: #ffffff !important;
+}
+
+.dark .bg-white,
+.dark .bg-white\/95,
+.dark .bg-white\/90,
+.dark .bg-white\/85,
+.dark .bg-white\/80,
+.dark .bg-white\/75,
+.dark .bg-white\/70,
+.dark .bg-white\/60,
+.dark .bg-slate-50,
+.dark .bg-slate-100 {
+  background-color: rgba(15, 23, 42, 0.88) !important;
+  color: #ffffff !important;
+}
+
+.dark .border-white\/70,
+.dark .border-white\/60,
+.dark .border-slate-100,
+.dark .border-slate-200,
+.dark .border-slate-300 {
+  border-color: rgba(255, 255, 255, 0.16) !important;
+}
+
+.dark .badge,
+.dark .chip,
+.dark .pill,
+.dark .tag,
+.dark .rounded-full.bg-blue-600\/10,
+.dark .rounded-full.bg-violet-600\/10,
+.dark .rounded-full.bg-pink-600\/10,
+.dark .rounded-full.bg-green-600\/10,
+.dark .rounded-full.bg-red-600\/10,
+.dark .rounded-full.bg-yellow-600\/10 {
+  background-color: rgba(96, 165, 250, 0.16) !important;
+  color: #ffffff !important;
+  border-color: rgba(147, 197, 253, 0.28) !important;
+}
+
+.dark .main-btn {
+  color: #ffffff !important;
+}
+
+.dark .soft-btn {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
+}
+
+.dark button {
+  color: inherit;
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+  color: #ffffff;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #cbd5e1;
+}
