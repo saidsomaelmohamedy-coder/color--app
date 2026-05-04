@@ -368,7 +368,7 @@ export default function ColorWheelPage() {
           {/* Hero */}
           <div className="rounded-4xl border border-white/70 bg-white/85 px-6 py-10 text-center shadow-2xl backdrop-blur-xl dark:border-white/20 dark:bg-slate-900 md:px-10">
             <div className="mx-auto inline-flex rounded-full bg-blue-600/10 px-5 py-2 text-sm font-black text-blue-700 dark:bg-blue-500/20 dark:text-blue-100">
-              🎡 درس تفاعلي
+              🎡 موضوع تفاعلي
             </div>
 
             <h1 className="mx-auto mt-5 max-w-4xl text-3xl font-black leading-normal text-slate-900 dark:text-white md:text-5xl">
@@ -388,11 +388,11 @@ export default function ColorWheelPage() {
           <div className={sectionCard}>
             <div className="mb-7 text-center">
               <div className="mx-auto inline-flex rounded-full bg-green-600/10 px-5 py-2 text-sm font-black text-green-700 dark:bg-green-500/20 dark:text-green-100">
-                🎯 أهداف الدرس
+                🎯 أهداف الموضوع
               </div>
 
               <h2 className="mt-4 text-2xl font-black text-slate-900 dark:text-white md:text-3xl">
-                بعد دراسة هذا الدرس يكون الطالب قادرًا على:
+                بعد دراسة هذا الموضوع يكون الطالب قادرًا على:
               </h2>
             </div>
 
@@ -448,12 +448,7 @@ export default function ColorWheelPage() {
               </div>
 
               <h2 className="mt-4 text-2xl font-black text-slate-900 dark:text-white md:text-3xl">
-                اضغط على أي درجة لون داخل الدائرة
-              </h2>
-
-              <p className="mx-auto mt-3 max-w-2xl font-bold leading-8 text-slate-600 dark:text-slate-200">
-                الدائرة بدون إطار خارجي، ملساء وبها تدرجات ألوان ناعمة.
-              </p>
+                 اضغط على أي درجة لون داخل الدائرة ثم تعرف على نوع اللون              </h2>
             </div>
 
             <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:[direction:ltr]">
@@ -531,7 +526,7 @@ export default function ColorWheelPage() {
           <div className={sectionCard}>
             <div className="mb-7 text-center">
               <div className="mx-auto inline-flex rounded-full bg-pink-600/10 px-5 py-2 text-sm font-black text-pink-700 dark:bg-pink-500/20 dark:text-pink-100">
-                🌈 محتوى الدرس
+                🌈 محتوى الموضوع
               </div>
 
               <h2 className="mt-4 text-2xl font-black text-slate-900 dark:text-white md:text-3xl">
@@ -623,7 +618,7 @@ export default function ColorWheelPage() {
           <div className={sectionCard}>
             <div className="mb-7 text-center">
               <div className="mx-auto inline-flex rounded-full bg-blue-600/10 px-5 py-2 text-sm font-black text-blue-700 dark:bg-blue-500/20 dark:text-blue-100">
-                🎬 فيديو الدرس
+                🎬 فيديو الموضوع
               </div>
 
               <h2 className="mt-4 text-2xl font-black text-slate-900 dark:text-white md:text-3xl">
@@ -655,11 +650,11 @@ export default function ColorWheelPage() {
           {/* Bottom buttons */}
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link href="/topics" className="soft-btn">
-              مشاهدة باقي الدروس
+              مشاهدة باقي الموضوعات
             </Link>
 
             <Link href="/activities?topic=color-wheel" className="main-btn">
-              نشاط هذا الدرس
+              نشاط هذا الموضوع
               <span>🧩</span>
             </Link>
           </div>

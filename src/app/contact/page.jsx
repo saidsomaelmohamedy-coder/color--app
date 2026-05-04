@@ -60,9 +60,9 @@ export default function ContactPage() {
         <div className="mb-10 overflow-hidden rounded-[2.5rem] border border-blue-100 bg-white shadow-xl dark:border-white/20 dark:bg-slate-900">
           <div className="px-6 py-10 text-center">
             <div className="mx-auto mb-5 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-5 py-2 text-sm font-black text-blue-700 dark:border-blue-300/30 dark:bg-blue-500/20 dark:text-blue-100">
-              <span>🎯</span>
-              <span>فكرة الموقع</span>
-            </div>
+           <span>💬</span>
+<span>تواصل معنا</span>
+</div>
 
             <h1 className="mt-5 text-4xl font-black leading-[1.4] text-slate-950 dark:text-white md:text-5xl">
               يسعدنا تواصلك معنا
@@ -243,7 +243,7 @@ export default function ContactPage() {
                 href="/topics"
                 className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-linear-to-l from-blue-600 to-violet-600 px-6 py-3 font-black text-white shadow-lg transition hover:-translate-y-1"
               >
-                الذهاب للدروس
+                الذهاب للموضوعات
                 <span>📚</span>
               </Link>
             </div>

@@ -80,7 +80,7 @@ export const activities = [
   {
     topicSlug: "what-are-colors",
     topicTitle: "ما هي الألوان؟",
-    title: "نشاط الدرس الأول: ما هي الألوان؟",
+    title: "نشاط : ما هي الألوان؟",
     icon: "📘",
     questions: [
       {
@@ -154,7 +154,7 @@ export const activities = [
   {
     topicSlug: "color-wheel",
     topicTitle: "دائرة الألوان",
-    title: "نشاط الدرس الثاني: دائرة الألوان",
+    title: "نشاط : دائرة الألوان",
     icon: "🎨",
     imageUrl: "حطي هنا لينك صورة نشاط الدرس الثاني",
     youtubeUrl: "حطي هنا لينك فيديو نشاط الدرس الثاني بصيغة embed",
@@ -283,9 +283,9 @@ export const activities = [
   {
     topicSlug: "color-meanings",
     topicTitle: "دلالات الألوان",
-    title: "نشاط الدرس الثالث: دلالات الألوان",
+    title: "نشاط : دلالات الألوان",
     icon: "🌈",
-    imageUrl: "حطي هنا لينك صورة نشاط الدرس الثالث",
+    imageUrl: "حطي هنا لينك صورة نشاط الموضوع الثالث",
     youtubeUrl: "حطي هنا لينك فيديو نشاط الدرس الثالث بصيغة embed",
     questions: [
       {
@@ -405,10 +405,10 @@ export const activities = [
   {
     topicSlug: "colors-in-design",
     topicTitle: "استخدام الألوان في التصميم",
-    title: "نشاط الدرس الرابع: استخدام الألوان في التصميم",
+    title: "نشاط : استخدام الألوان في التصميم",
     icon: "🖌️",
-    imageUrl: "حطي هنا لينك صورة نشاط الدرس الرابع",
-    youtubeUrl: "حطي هنا لينك فيديو نشاط الدرس الرابع بصيغة embed",
+    imageUrl: "حطي هنا لينك صورة نشاط الموضوع الرابع",
+    youtubeUrl: "حطي هنا لينك فيديو نشاط الموضوع الرابع بصيغة embed",
     questions: [
       {
         type: "choice",

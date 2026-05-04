@@ -36,7 +36,7 @@ export default function HomePage() {
               </Link>
 
               <Link href="/topics" className="soft-btn">
-                مشاهدة الدروس
+               مشاهدة الموضوعات
                 <span>📚</span>
               </Link>
             </div>

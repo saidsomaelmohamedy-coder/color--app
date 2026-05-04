@@ -184,7 +184,7 @@ export default function WhatAreColorsPage() {
           {/* Title */}
           <div className="rounded-4xl border border-slate-200 bg-white px-6 py-10 text-center text-slate-900 shadow-2xl backdrop-blur-xl dark:border-white/20 dark:bg-slate-900 dark:text-white md:px-10">
             <div className="mx-auto inline-flex rounded-full border border-blue-200 bg-blue-50 px-5 py-2 text-sm font-black text-blue-700 dark:border-blue-300/30 dark:bg-blue-500/20 dark:text-blue-100">
-              🎨 درس تفاعلي
+              🎨 موضوع تفاعلي
             </div>
 
             <h1 className="mx-auto mt-5 max-w-4xl text-3xl font-black leading-normal text-slate-900 dark:text-white md:text-5xl">
@@ -204,11 +204,11 @@ export default function WhatAreColorsPage() {
           <div className={sectionCard}>
             <div className="mb-7 text-center">
               <div className="mx-auto inline-flex rounded-full border border-green-200 bg-green-50 px-5 py-2 text-sm font-black text-green-700 dark:border-green-300/30 dark:bg-green-500/20 dark:text-green-100">
-                🎯 أهداف الدرس
+                🎯 أهداف الموضوع
               </div>
 
               <h2 className="mt-4 text-2xl font-black text-slate-900 dark:text-white md:text-3xl">
-                بعد دراسة هذا الدرس يكون الطالب قادرًا على:
+                بعد دراسة هذا الموضوع يكون الطالب قادرًا على:
               </h2>
             </div>
 
@@ -382,7 +382,7 @@ export default function WhatAreColorsPage() {
           <div className={sectionCard}>
             <div className="mb-7 text-center">
               <div className="mx-auto inline-flex rounded-full border border-pink-200 bg-pink-50 px-5 py-2 text-sm font-black text-pink-700 dark:border-pink-300/30 dark:bg-pink-500/20 dark:text-pink-100">
-                🎬 فيديو الدرس
+                🎬 فيديو الموضوع
               </div>
 
               <h2 className="mt-4 text-2xl font-black text-slate-900 dark:text-white md:text-3xl">
@@ -410,7 +410,7 @@ export default function WhatAreColorsPage() {
           {/* Bottom buttons */}
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link href="/topics" className="soft-btn">
-              مشاهدة باقي الدروس
+              مشاهدة باقي الموضوعات
             </Link>
 
             <Link href="/activities?topic=what-are-colors" className="main-btn">

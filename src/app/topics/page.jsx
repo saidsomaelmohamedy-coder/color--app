@@ -3,7 +3,7 @@ import Link from "next/link";
 const lessons = [
   {
     href: "/topics/what-are-colors",
-    badge: "درس 1",
+    badge: "موضوع 1",
     icon: "🎨",
     title: "ما هي الألوان؟",
     image:
@@ -14,7 +14,7 @@ const lessons = [
   },
   {
     href: "/topics/color-wheel",
-    badge: "درس 2",
+    badge: "موضوع 2",
     icon: "🎡",
     title: "دائرة الألوان",
     image:
@@ -25,7 +25,7 @@ const lessons = [
   },
   {
     href: "/topics/color-meanings",
-    badge: "درس 3",
+    badge: "موضوع 3",
     icon: "💡",
     title: "دلالات الألوان",
     image:
@@ -36,7 +36,7 @@ const lessons = [
   },
   {
     href: "/topics/colors-in-design",
-    badge: "درس 4",
+    badge: "موضوع 4",
     icon: "🖌️",
     title: "استخدام الألوان في التصميم",
     image:
@@ -47,7 +47,7 @@ const lessons = [
   },
   {
     href: "/topics/color-mistakes",
-    badge: "درس 5",
+    badge: "موضوع 5",
     icon: "⚠️",
     title: "أخطاء شائعة في اختيار الألوان",
     image:
@@ -115,8 +115,8 @@ export default function TopicsPage() {
           <div className="mb-10 overflow-hidden rounded-3xl border border-blue-100 bg-white shadow-xl dark:border-white/20 dark:bg-slate-900">
             <div className="px-6 py-10 text-center dark:bg-slate-900">
               <div className="badge mb-5">
-                <span className="badge-icon">🎯</span>
-                <span>فكرة الموقع</span>
+<span className="badge-icon">📚</span>
+<span>موضوعات الموقع</span>
               </div>
 
               <h1 className="mt-5 text-4xl font-black leading-[1.4] text-black md:text-5xl dark:text-white">
@@ -124,7 +124,7 @@ export default function TopicsPage() {
               </h1>
 
               <p className="mx-auto mt-5 max-w-3xl text-lg font-bold leading-9 text-black/70 dark:text-slate-200">
-                اختر الدرس المناسب للبدء في تعلم الألوان ودلالتها داخل التصميم
+                اختر الموضوع المناسب للبدء في تعلم الألوان ودلالتها داخل التصميم
                 الجرافيكي بطريقة بسيطة وواضحة.
               </p>
             </div>
@@ -179,7 +179,7 @@ export default function TopicsPage() {
                           "linear-gradient(to left, #2563eb, #7c3aed, #ec4899)",
                       }}
                     >
-                      افتح الدرس ⬅️
+                      افتح الموضوع ⬅️
                     </div>
                   </div>
                 </div>

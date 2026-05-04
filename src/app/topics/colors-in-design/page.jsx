@@ -220,7 +220,7 @@ export default function ColorsInDesignPage() {
               {/* Text Right */}
               <div className="text-center lg:[direction:rtl]">
                 <div className="mx-auto inline-flex rounded-full bg-blue-600/10 px-5 py-2 text-sm font-black text-blue-700 dark:bg-blue-500/20 dark:text-blue-100">
-                  🖌️ درس تفاعلي
+                  🖌️ موضوع تفاعلي
                 </div>
 
                 <h1 className="mx-auto mt-5 max-w-4xl text-4xl font-black leading-[1.4] text-slate-900 dark:text-white md:text-5xl">
@@ -243,11 +243,11 @@ export default function ColorsInDesignPage() {
           <div className={sectionCard}>
             <div className="mb-7 text-center">
               <div className="mx-auto inline-flex rounded-full bg-green-600/10 px-5 py-2 text-sm font-black text-green-700 dark:bg-green-500/20 dark:text-green-100">
-                🎯 أهداف الدرس
+                🎯 أهداف الموضوع
               </div>
 
               <h2 className="mt-4 text-3xl font-black text-slate-900 dark:text-white">
-                بعد دراسة هذا الدرس يكون الطالب قادرًا على:
+                بعد دراسة هذا الموضوع يكون الطالب قادرًا على:
               </h2>
             </div>
 
@@ -272,7 +272,7 @@ export default function ColorsInDesignPage() {
           <div className={sectionCard}>
             <div className="text-center">
               <div className="mx-auto inline-flex rounded-full bg-violet-600/10 px-5 py-2 text-sm font-black text-violet-700 dark:bg-violet-500/20 dark:text-violet-100">
-                📘 فكرة الدرس
+                📘 فكرة الموضوع
               </div>
 
               <h2 className="mt-4 text-3xl font-black text-slate-900 dark:text-white">
@@ -291,7 +291,7 @@ export default function ColorsInDesignPage() {
           <div className={sectionCard}>
             <div className="mb-8 text-center">
               <div className="mx-auto inline-flex rounded-full bg-pink-600/10 px-5 py-2 text-sm font-black text-pink-700 dark:bg-pink-500/20 dark:text-pink-100">
-                🎨 محتوى الدرس
+                🎨 محتوى الموضوع
               </div>
 
               <h2 className="mt-4 text-3xl font-black text-slate-900 dark:text-white">
@@ -413,7 +413,7 @@ export default function ColorsInDesignPage() {
           <div className={sectionCard}>
             <div className="mb-7 text-center">
               <div className="mx-auto inline-flex rounded-full bg-blue-600/10 px-5 py-2 text-sm font-black text-blue-700 dark:bg-blue-500/20 dark:text-blue-100">
-                🎬 فيديو الدرس
+                🎬 فيديو الموضوع
               </div>
 
               <h2 className="mt-4 text-3xl font-black text-slate-900 dark:text-white">
@@ -449,11 +449,11 @@ export default function ColorsInDesignPage() {
           {/* Bottom Buttons */}
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link href="/topics" className="soft-btn">
-              مشاهدة باقي الدروس
+              مشاهدة باقي الموضوعات
             </Link>
 
             <Link href="/activities?topic=colors-in-design" className="main-btn">
-              نشاط هذا الدرس
+              نشاط هذا الموضوع
               <span>🧩</span>
             </Link>
           </div>

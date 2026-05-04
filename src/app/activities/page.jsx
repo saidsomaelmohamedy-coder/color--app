@@ -11,31 +11,31 @@ const thinkingChildImage =
 const topics = [
   {
     slug: "what-are-colors",
-    title: "الدرس الأول: ما هي الألوان؟",
+    title: " نشاط: ما هي الألوان؟",
     icon: "📘",
     desc: "تدريب الطالب على التعرف على الألوان وربطها بالأشياء.",
   },
   {
     slug: "color-wheel",
-    title: "الدرس الثاني: دائرة الألوان",
+    title: "  نشاط : دائرة الألوان",
     icon: "🎨",
     desc: "تدريب الطالب على فهم ترتيب الألوان وتصنيفها.",
   },
   {
     slug: "color-meanings",
-    title: "الدرس الثالث: دلالات الألوان",
+    title: "نشاط : دلالات الألوان",
     icon: "🌈",
     desc: "تدريب الطالب على ربط اللون بالمعنى المناسب.",
   },
   {
     slug: "colors-in-design",
-    title: "الدرس الرابع: استخدام الألوان في التصميم",
+    title: " نشاط :استخدام الألوان في التصميم",
     icon: "🖌️",
     desc: "تدريب الطالب على اختيار ألوان واضحة ومريحة.",
   },
   {
     slug: "color-mistakes",
-    title: "الدرس الخامس: أخطاء اختيار الألوان",
+    title: "  نشاط :أخطاء اختيار الألوان",
     icon: "⚠️",
     desc: "تدريب الطالب على اكتشاف أخطاء الألوان وتصحيحها.",
   },
@@ -215,9 +215,9 @@ function ActivitiesList() {
       <div className="page-container">
         <HeroSection
           badge="🧩 الأنشطة التفاعلية"
-          title="اختاري نشاط الدرس وابدئي التدريب"
-          description="كل درس يحتوي على نشاطين تفاعليين بطريقة واضحة وسهلة، تساعد الطالب على مراجعة الدرس والتطبيق خطوة بخطوة."
-          chips={["نشاطان لكل درس", "تغذية راجعة مباشرة", "تصميم واضح وممتع"]}
+          title="اختاري نشاط الموضوع وابدئي التدريب"
+          description="كل موضوع يحتوي على نشاطين تفاعليين بطريقة واضحة وسهلة، تساعد الطالب على مراجعة الموضوع والتطبيق خطوة بخطوة."
+          chips={["نشاطان لكل موضوع", "تغذية راجعة مباشرة", "تصميم واضح وممتع"]}
           showImage={true}
         />
 
@@ -318,7 +318,7 @@ function LessonOneActivity() {
 
   return (
     <ActivityShell
-      title="نشاط الدرس الأول: ما هي الألوان؟"
+      title="نشاط :  ما هي الألوان؟"
       topicTitle="ما هي الألوان؟"
       answeredCount={answeredCount}
       correctCount={correctCount}
@@ -516,7 +516,7 @@ function LessonTwoActivity() {
 
   return (
     <ActivityShell
-      title="نشاط الدرس الثاني: دائرة الألوان"
+      title="نشاط : دائرة الألوان"
       topicTitle="دائرة الألوان"
       answeredCount={answeredCount}
       correctCount={correctCount}
@@ -645,7 +645,7 @@ function LessonThreeActivity() {
 
   return (
     <ActivityShell
-      title="نشاط الدرس الثالث: دلالات الألوان"
+      title="نشاط : دلالات الألوان"
       topicTitle="دلالات الألوان"
       answeredCount={answeredCount}
       correctCount={correctCount}
@@ -792,7 +792,7 @@ function LessonFourActivity() {
 
   return (
     <ActivityShell
-      title="نشاط الدرس الرابع: استخدام الألوان في التصميم"
+      title="نشاط  : استخدام الألوان في التصميم"
       topicTitle="استخدام الألوان في التصميم"
       answeredCount={answeredCount}
       correctCount={correctCount}
@@ -930,7 +930,7 @@ function LessonFiveActivity() {
 
   return (
     <ActivityShell
-      title="نشاط الدرس الخامس: أخطاء شائعة في اختيار الألوان"
+      title="نشاط : أخطاء شائعة في اختيار الألوان"
       topicTitle="أخطاء اختيار الألوان"
       answeredCount={answeredCount}
       correctCount={correctCount}
@@ -1135,9 +1135,9 @@ function ActivityShell({
 
       <div className="page-container">
         <HeroSection
-          badge="🧩 نشاط خاص بالدرس"
+          badge="🧩 نشاط خاص بالموضوع"
           title={title}
-          description={`هذا النشاط مرتبط بدرس: ${topicTitle}، ويحتوي على تدريبين لمساعدة الطالب على التطبيق بطريقة سهلة ومنظمة.`}
+          description={`هذا النشاط مرتبط بموضوع: ${topicTitle}، ويحتوي على تدريبين لمساعدة الطالب على التطبيق بطريقة سهلة ومنظمة.`}
           chips={[
             `الأنشطة: ${safeTotal}`,
             `الإجابات الصحيحة: ${safeCorrectCount}`,
@@ -1258,7 +1258,7 @@ function BottomLinks() {
   return (
     <div className="mt-10 flex flex-wrap justify-center gap-4">
       <Link href="/topics" className="soft-btn">
-        الرجوع للدروس
+        الرجوع للموضوعات
         <span>📚</span>
       </Link>
 
