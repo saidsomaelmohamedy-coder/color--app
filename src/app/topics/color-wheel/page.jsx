@@ -631,7 +631,7 @@ export default function ColorWheelPage() {
               </h2>
 
               <p className="mx-auto mt-3 max-w-2xl font-bold leading-8 text-slate-600 dark:text-slate-200">
-                يساعد الفيديو على فهم دائرة الألوان بطريقة سهلة وواضحة.
+                في هذا الفيديو ستتعرف على  دائرةالألوان بطريقة سهلة وواضحة.
               </p>
             </div>
 
