@@ -4,7 +4,7 @@ import ThemeToggle from "./ThemeToggle";
 const links = [
   { href: "/", label: "الرئيسية" },
   { href: "/about", label: "عن الموقع" },
-  { href: "/topics", label: "الدروس" },
+  { href: "/topics", label:" الموضوعات" },
   { href: "/activities", label: "الأنشطة" },
   { href: "/exam", label: "الاختبار النهائي" },
   { href: "/contact", label: "تواصل معنا" },

@@ -17,7 +17,7 @@ export const metadata = {
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({ children }) {
@@ -29,15 +29,11 @@ export default function RootLayout({ children }) {
             __html: `
               (function () {
                 try {
-                  var theme = localStorage.getItem("theme");
-
-                  if (theme === "dark") {
-                    document.documentElement.classList.add("dark");
-                  } else {
-                    document.documentElement.classList.remove("dark");
-                    localStorage.setItem("theme", "light");
-                  }
-                } catch (error) {}
+                  document.documentElement.classList.remove("dark");
+                  document.documentElement.style.colorScheme = "light";
+                  localStorage.removeItem("theme");
+                  localStorage.setItem("theme", "light");
+                } catch (e) {}
               })();
             `,
           }}
@@ -47,9 +43,7 @@ export default function RootLayout({ children }) {
       <body className={cairo.className}>
         <div className="flex min-h-screen flex-col overflow-x-hidden">
           <Navbar />
-
           <main className="flex-1">{children}</main>
-
           <Footer />
         </div>
       </body>

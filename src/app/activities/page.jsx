@@ -72,9 +72,9 @@ function PageBackground() {
   return (
     <>
       <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-blue-50 via-white to-pink-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950" />
-      <div className="pointer-events-none absolute right-0 top-0 -z-10 h-80 w-80 rounded-full bg-blue-300/25 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 left-0 -z-10 h-80 w-80 rounded-full bg-pink-300/25 blur-3xl" />
-      <div className="pointer-events-none absolute left-1/3 top-1/3 -z-10 h-72 w-72 rounded-full bg-violet-300/20 blur-3xl" />
+      <div className="pointer-events-none absolute right-0 top-0 -z-10 h-80 w-80 rounded-full bg-blue-300/25 blur-3xl dark:bg-blue-500/10" />
+      <div className="pointer-events-none absolute bottom-0 left-0 -z-10 h-80 w-80 rounded-full bg-pink-300/25 blur-3xl dark:bg-pink-500/10" />
+      <div className="pointer-events-none absolute left-1/3 top-1/3 -z-10 h-72 w-72 rounded-full bg-violet-300/20 blur-3xl dark:bg-violet-500/10" />
     </>
   );
 }
@@ -86,7 +86,7 @@ function hasRealImage(src) {
 function MainCard({ children, className = "" }) {
   return (
     <div
-      className={`rounded-4xl border border-white/70 bg-white/85 p-6 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-white/5 md:p-8 ${className}`}
+      className={`rounded-4xl border border-slate-200 bg-white p-6 text-slate-900 shadow-2xl backdrop-blur-xl dark:border-white/20 dark:bg-slate-900 dark:text-white md:p-8 ${className}`}
     >
       {children}
     </div>
@@ -105,14 +105,14 @@ function SmartImage({
   }
 
   return (
-    <div className="flex min-h-65 w-full flex-col items-center justify-center rounded-[1.7rem] bg-white/85 p-6 text-center shadow-xl dark:bg-white/10">
+    <div className="flex min-h-65 w-full flex-col items-center justify-center rounded-[1.7rem] bg-white p-6 text-center shadow-xl dark:bg-slate-800">
       <div className="text-7xl">{icon}</div>
 
-      <p className="mt-5 text-lg font-black leading-8 text-slate-600 dark:text-slate-300">
+      <p className="mt-5 text-lg font-black leading-8 text-slate-700 dark:text-slate-100">
         {label}
       </p>
 
-      <p className="mt-2 rounded-2xl bg-blue-600/10 px-4 py-2 text-sm font-black text-blue-700 dark:text-blue-300">
+      <p className="mt-2 rounded-2xl bg-blue-600/10 px-4 py-2 text-sm font-black text-blue-700 dark:bg-blue-500/20 dark:text-blue-100">
         ضعي رابط الصورة هنا
       </p>
     </div>
@@ -128,7 +128,7 @@ function HeroSection({
   showImage = true,
 }) {
   return (
-    <div className="overflow-hidden rounded-4xl border border-white/70 bg-white/85 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-white/5">
+    <div className="overflow-hidden rounded-4xl border border-slate-200 bg-white text-slate-900 shadow-2xl backdrop-blur-xl dark:border-white/20 dark:bg-slate-900 dark:text-white">
       <div
         className={`grid items-center gap-8 p-6 md:p-8 ${
           showImage ? "lg:grid-cols-[0.9fr_1.1fr]" : ""
@@ -137,13 +137,13 @@ function HeroSection({
       >
         {showImage && (
           <div>
-            <div className="rounded-4xl bg-linear-to-br from-blue-50 via-violet-50 to-pink-50 p-4 shadow-inner dark:from-white/10 dark:via-white/5 dark:to-white/10">
+            <div className="rounded-4xl border border-blue-100 bg-blue-50 p-4 shadow-inner dark:border-white/20 dark:bg-slate-800">
               <SmartImage
                 src={imageUrl}
                 alt="طفل يفكر"
                 icon="🤔"
                 label="صورة طفل يفكر"
-                className="h-90 w-full rounded-[1.6rem] bg-white object-contain p-3 shadow-xl dark:bg-white/10"
+                className="h-90 w-full rounded-[1.6rem] bg-white object-contain p-3 shadow-xl dark:bg-slate-900"
               />
             </div>
           </div>
@@ -153,7 +153,7 @@ function HeroSection({
           className={showImage ? "text-center lg:text-right" : "text-center"}
           style={{ direction: "rtl" }}
         >
-          <div className="inline-flex rounded-full bg-blue-600/10 px-5 py-2 text-sm font-black text-blue-700 dark:text-blue-300">
+          <div className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-5 py-2 text-sm font-black text-blue-700 dark:border-blue-300/30 dark:bg-blue-500/20 dark:text-blue-100">
             {badge}
           </div>
 
@@ -161,7 +161,7 @@ function HeroSection({
             {title}
           </h1>
 
-          <p className="mx-auto mt-5 max-w-3xl text-lg font-bold leading-9 text-slate-600 dark:text-slate-300">
+          <p className="mx-auto mt-5 max-w-3xl text-lg font-bold leading-9 text-slate-700 dark:text-slate-200">
             {description}
           </p>
 
@@ -170,7 +170,7 @@ function HeroSection({
               {chips.map((chip) => (
                 <div
                   key={chip}
-                  className="rounded-2xl bg-white/75 p-4 text-center text-sm font-black text-slate-700 shadow-sm dark:bg-white/10 dark:text-slate-200"
+                  className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center text-sm font-black text-slate-700 shadow-sm dark:border-white/20 dark:bg-slate-800 dark:text-slate-100"
                 >
                   {chip}
                 </div>
@@ -190,7 +190,7 @@ function ActivitiesLoading() {
 
       <div className="page-container">
         <MainCard className="text-center">
-          <div className="mx-auto grid h-20 w-20 place-items-center rounded-3xl bg-blue-600/10 text-5xl">
+          <div className="mx-auto grid h-20 w-20 place-items-center rounded-3xl bg-blue-600/10 text-5xl dark:bg-blue-500/20">
             🧩
           </div>
 
@@ -226,17 +226,17 @@ function ActivitiesList() {
             <Link
               key={topic.slug}
               href={`/activities?topic=${topic.slug}`}
-              className="group flex h-full flex-col overflow-hidden rounded-4xl border border-white/70 bg-white/85 p-6 text-right shadow-xl backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border-white/10 dark:bg-white/5"
+              className="group flex h-full flex-col overflow-hidden rounded-4xl border border-slate-200 bg-white p-6 text-right text-slate-900 shadow-xl backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border-white/20 dark:bg-slate-900 dark:text-white"
             >
               <div
                 className="flex items-center justify-between gap-4"
                 style={{ direction: "ltr" }}
               >
-                <div className="grid h-16 w-16 place-items-center rounded-2xl bg-blue-600/10 text-4xl shadow-sm">
+                <div className="grid h-16 w-16 place-items-center rounded-2xl bg-blue-600/10 text-4xl shadow-sm dark:bg-blue-500/20">
                   {topic.icon}
                 </div>
 
-                <div className="rounded-full bg-white px-5 py-2 text-sm font-black text-slate-700 shadow-sm dark:bg-white/10 dark:text-white">
+                <div className="rounded-full border border-slate-200 bg-slate-50 px-5 py-2 text-sm font-black text-slate-700 shadow-sm dark:border-white/20 dark:bg-slate-800 dark:text-white">
                   نشاط {index + 1}
                 </div>
               </div>
@@ -245,7 +245,7 @@ function ActivitiesList() {
                 {topic.title}
               </h2>
 
-              <p className="mt-3 min-h-22.5 font-bold leading-8 text-slate-600 dark:text-slate-300">
+              <p className="mt-3 min-h-22.5 font-bold leading-8 text-slate-700 dark:text-slate-200">
                 {topic.desc}
               </p>
 
@@ -373,7 +373,7 @@ function LessonOneActivity() {
           اسحب اللون المناسب وضعه على الصورة الصحيحة. سيظهر التصحيح أسفل كل صورة.
         </Hint>
 
-        <div className="mt-6 grid gap-5 md:grid-cols-3">
+        <div className="mt-6 grid items-stretch gap-5 md:grid-cols-3">
           <DropImageCard
             title="وردة"
             imageSrc="https://i.pinimg.com/736x/4f/cf/4a/4fcf4ab3a7594fd54ad3ac8d76415a3a.jpg"
@@ -402,7 +402,7 @@ function LessonOneActivity() {
           />
         </div>
 
-        <div className="mt-7 rounded-4xl bg-slate-50 p-5 dark:bg-white/5">
+        <div className="mt-7 rounded-4xl border border-slate-200 bg-slate-50 p-5 dark:border-white/20 dark:bg-slate-800">
           <h3 className="text-xl font-black text-slate-900 dark:text-white">
             الألوان المتاحة
           </h3>
@@ -452,26 +452,10 @@ function LessonOneActivity() {
 
 function LessonTwoActivity() {
   const wheelTasks = [
-    {
-      key: "primary",
-      instruction: "اضغط على لون أساسي",
-      target: "red",
-    },
-    {
-      key: "secondary",
-      instruction: "اضغط على لون ثانوي",
-      target: "green",
-    },
-    {
-      key: "warm",
-      instruction: "اضغط على لون دافئ",
-      target: "orange",
-    },
-    {
-      key: "cool",
-      instruction: "اضغط على لون بارد",
-      target: "blue",
-    },
+    { key: "primary", instruction: "اضغط على لون أساسي", target: "red" },
+    { key: "secondary", instruction: "اضغط على لون ثانوي", target: "green" },
+    { key: "warm", instruction: "اضغط على لون دافئ", target: "orange" },
+    { key: "cool", instruction: "اضغط على لون بارد", target: "blue" },
   ];
 
   const [wheelStep, setWheelStep] = useState(0);
@@ -597,7 +581,7 @@ function LessonTwoActivity() {
           />
         </div>
 
-        <div className="mt-7 rounded-4xl bg-slate-50 p-5 dark:bg-white/5">
+        <div className="mt-7 rounded-4xl border border-slate-200 bg-slate-50 p-5 dark:border-white/20 dark:bg-slate-800">
           <h3 className="text-xl font-black text-slate-900 dark:text-white">
             الألوان المتاحة
           </h3>
@@ -824,7 +808,7 @@ function LessonFourActivity() {
             className={`rounded-4xl border p-5 text-right shadow-xl transition hover:-translate-y-1 ${
               bestDesign === "good"
                 ? "border-green-500 bg-green-500/10"
-                : "border-white/70 bg-white/85 dark:border-white/10 dark:bg-white/5"
+                : "border-slate-200 bg-white dark:border-white/20 dark:bg-slate-800"
             }`}
           >
             <DesignPreview good />
@@ -839,7 +823,7 @@ function LessonFourActivity() {
             className={`rounded-4xl border p-5 text-right shadow-xl transition hover:-translate-y-1 ${
               bestDesign === "bad"
                 ? "border-red-500 bg-red-500/10"
-                : "border-white/70 bg-white/85 dark:border-white/10 dark:bg-white/5"
+                : "border-slate-200 bg-white dark:border-white/20 dark:bg-slate-800"
             }`}
           >
             <DesignPreview />
@@ -955,7 +939,7 @@ function LessonFiveActivity() {
       <ActivityBlock number="1" icon="⚠️" title="نشاط اكتشاف الخطأ">
         <Hint>حدد الخطأ الموجود في التصميم.</Hint>
 
-        <div className="mt-6 rounded-4xl bg-white p-6 shadow-xl dark:bg-white/10">
+        <div className="mt-6 rounded-4xl border border-slate-200 bg-white p-6 shadow-xl dark:border-white/20 dark:bg-slate-800">
           <div className="rounded-3xl bg-white p-5 shadow-inner">
             <h3 className="text-3xl font-black text-yellow-300">
               عنوان غير واضح
@@ -1013,8 +997,7 @@ function LessonFiveActivity() {
           className="mt-6 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]"
           dir="rtl"
         >
-          {/* ✅ الاختيارات على اليمين */}
-          <div className="rounded-4xl bg-slate-50 p-6 text-right dark:bg-white/5">
+          <div className="rounded-4xl border border-slate-200 bg-slate-50 p-6 text-right dark:border-white/20 dark:bg-slate-800">
             <h3 className="text-xl font-black text-slate-900 dark:text-white">
               اختار التعديل الأفضل
             </h3>
@@ -1049,9 +1032,8 @@ function LessonFiveActivity() {
             </div>
           </div>
 
-          {/* ✅ التصميم يتغير بعد الاختيار */}
-          <div className="rounded-4xl bg-white p-6 text-right shadow-xl dark:bg-white/10">
-            <p className="text-lg font-black text-slate-500">
+          <div className="rounded-4xl border border-slate-200 bg-white p-6 text-right shadow-xl dark:border-white/20 dark:bg-slate-800">
+            <p className="text-lg font-black text-slate-600 dark:text-slate-200">
               {fixChoice ? "التصميم بعد الاختيار:" : "التصميم قبل التعديل:"}
             </p>
 
@@ -1103,8 +1085,8 @@ function LessonFiveActivity() {
               <div
                 className={`mt-4 rounded-2xl px-5 py-4 text-base font-black ${
                   fixChoice === "clear"
-                    ? "bg-green-500/10 text-green-700 dark:text-green-300"
-                    : "bg-red-500/10 text-red-700 dark:text-red-300"
+                    ? "bg-green-500/10 text-green-700 dark:text-green-200"
+                    : "bg-red-500/10 text-red-700 dark:text-red-200"
                 }`}
               >
                 {fixChoice === "clear"
@@ -1152,17 +1134,6 @@ function ActivityShell({
       <PageBackground />
 
       <div className="page-container">
-        <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-          <Link href="/activities" className="soft-btn">
-            ← رجوع لكل الأنشطة
-          </Link>
-
-          <Link href="/activities" className="main-btn">
-            الرجوع للأنشطة
-            <span>🧩</span>
-          </Link>
-        </div>
-
         <HeroSection
           badge="🧩 نشاط خاص بالدرس"
           title={title}
@@ -1178,7 +1149,7 @@ function ActivityShell({
         <div className="mt-8 space-y-7">{children}</div>
 
         <MainCard className="mt-8 text-center">
-          <div className="mx-auto inline-flex rounded-full bg-green-600/10 px-5 py-2 text-sm font-black text-green-700 dark:text-green-300">
+          <div className="mx-auto inline-flex rounded-full border border-green-200 bg-green-50 px-5 py-2 text-sm font-black text-green-700 dark:border-green-300/30 dark:bg-green-500/20 dark:text-green-100">
             ✅ نتيجة النشاط
           </div>
 
@@ -1187,9 +1158,9 @@ function ActivityShell({
           </h2>
 
           <div className="mx-auto mt-7 grid max-w-3xl gap-5 md:grid-cols-3">
-            <div className="rounded-[1.7rem] bg-blue-500/10 p-5 text-center shadow-sm">
+            <div className="rounded-[1.7rem] border border-blue-100 bg-blue-50 p-5 text-center shadow-sm dark:border-white/20 dark:bg-slate-800">
               <div className="text-4xl">📝</div>
-              <p className="mt-2 text-sm font-black text-blue-700 dark:text-blue-300">
+              <p className="mt-2 text-sm font-black text-blue-700 dark:text-blue-100">
                 تم الحل
               </p>
               <p className="mt-1 text-2xl font-black text-slate-900 dark:text-white">
@@ -1197,9 +1168,9 @@ function ActivityShell({
               </p>
             </div>
 
-            <div className="rounded-[1.7rem] bg-green-500/10 p-5 text-center shadow-sm">
+            <div className="rounded-[1.7rem] border border-green-100 bg-green-50 p-5 text-center shadow-sm dark:border-white/20 dark:bg-slate-800">
               <div className="text-4xl">✅</div>
-              <p className="mt-2 text-sm font-black text-green-700 dark:text-green-300">
+              <p className="mt-2 text-sm font-black text-green-700 dark:text-green-100">
                 صحيح
               </p>
               <p className="mt-1 text-2xl font-black text-slate-900 dark:text-white">
@@ -1207,9 +1178,9 @@ function ActivityShell({
               </p>
             </div>
 
-            <div className="rounded-[1.7rem] bg-red-500/10 p-5 text-center shadow-sm">
+            <div className="rounded-[1.7rem] border border-red-100 bg-red-50 p-5 text-center shadow-sm dark:border-white/20 dark:bg-slate-800">
               <div className="text-4xl">❌</div>
-              <p className="mt-2 text-sm font-black text-red-700 dark:text-red-300">
+              <p className="mt-2 text-sm font-black text-red-700 dark:text-red-100">
                 غير صحيح
               </p>
               <p className="mt-1 text-2xl font-black text-slate-900 dark:text-white">
@@ -1227,20 +1198,20 @@ function ActivityShell({
 
 function ActivityBlock({ number, icon = "🧩", title, children }) {
   return (
-    <div className="overflow-hidden rounded-4xl border border-white/70 bg-white/85 shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-white/5">
-      <div className="border-b border-slate-100 bg-linear-to-l from-blue-50 via-white to-violet-50 p-6 dark:border-white/10 dark:from-white/10 dark:via-white/5 dark:to-white/10">
+    <div className="overflow-hidden rounded-4xl border border-slate-200 bg-white text-slate-900 shadow-xl backdrop-blur-xl dark:border-white/20 dark:bg-slate-900 dark:text-white">
+      <div className="border-b border-slate-200 bg-blue-50 p-6 dark:border-white/20 dark:bg-slate-800">
         <div
           className="flex items-start justify-between gap-4"
           style={{ direction: "ltr" }}
         >
           {icon && (
-            <div className="grid h-14 w-14 shrink-0 place-items-center rounded-[1.4rem] bg-white text-3xl shadow-lg dark:bg-white/10">
+            <div className="grid h-14 w-14 shrink-0 place-items-center rounded-[1.4rem] bg-white text-3xl shadow-lg dark:bg-slate-900">
               {icon}
             </div>
           )}
 
           <div className="w-full text-right" style={{ direction: "rtl" }}>
-            <p className="mb-2 text-sm font-black text-slate-500 dark:text-slate-300">
+            <p className="mb-2 text-sm font-black text-slate-600 dark:text-slate-300">
               نشاط {number}
             </p>
 
@@ -1262,7 +1233,7 @@ function ActivityBlock({ number, icon = "🧩", title, children }) {
 
 function Hint({ children }) {
   return (
-    <div className="rounded-3xl border border-blue-200 bg-blue-50 p-5 text-lg font-black leading-9 text-blue-800 shadow-sm dark:border-blue-500/30 dark:bg-blue-500/10 dark:text-blue-200">
+    <div className="rounded-3xl border border-blue-200 bg-blue-50 p-5 text-lg font-black leading-9 text-blue-800 shadow-sm dark:border-blue-500/30 dark:bg-blue-500/20 dark:text-blue-100">
       {children}
     </div>
   );
@@ -1273,8 +1244,8 @@ function FeedbackBox({ correct, text }) {
     <div
       className={`mt-5 rounded-3xl border p-5 text-xl font-black leading-9 ${
         correct
-          ? "border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-300"
-          : "border-red-500/40 bg-red-500/10 text-red-700 dark:text-red-300"
+          ? "border-green-500/40 bg-green-50 text-green-700 dark:bg-green-500/20 dark:text-green-100"
+          : "border-red-500/40 bg-red-50 text-red-700 dark:bg-red-500/20 dark:text-red-100"
       }`}
     >
       {correct ? "✅ " : "❌ "}
@@ -1311,9 +1282,9 @@ function ChoiceButton({ label, selected, correct, onClick }) {
       className={`rounded-3xl border p-5 text-center text-lg font-black leading-8 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md ${
         selected
           ? correct
-            ? "border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-300"
-            : "border-red-500/40 bg-red-500/10 text-red-700 dark:text-red-300"
-          : "border-slate-100 bg-slate-50 text-slate-700 hover:bg-blue-50 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:bg-white/10"
+            ? "border-green-500/40 bg-green-50 text-green-700 dark:bg-green-500/20 dark:text-green-100"
+            : "border-red-500/40 bg-red-50 text-red-700 dark:bg-red-500/20 dark:text-red-100"
+          : "border-slate-200 bg-slate-50 text-slate-700 hover:bg-blue-50 dark:border-white/20 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
       }`}
     >
       {selected ? (correct ? "✅ " : "❌ ") : ""}
@@ -1331,13 +1302,13 @@ function ImageChoiceCard({
   onChoose,
 }) {
   return (
-    <div className="rounded-4xl border border-slate-200 bg-slate-50 p-4 text-center shadow-sm dark:border-white/10 dark:bg-white/5">
+    <div className="rounded-4xl border border-slate-200 bg-slate-50 p-4 text-center shadow-sm dark:border-white/20 dark:bg-slate-800">
       <SmartImage
         src={imageSrc}
         alt={imageAlt}
         icon="🖼️"
         label={title}
-        className="h-44 w-full rounded-3xl bg-white object-contain p-3 shadow-md"
+        className="h-44 w-full rounded-3xl bg-white object-contain p-3 shadow-md dark:bg-slate-900"
       />
 
       <h3 className="mt-4 text-xl font-black text-slate-900 dark:text-white">
@@ -1382,26 +1353,26 @@ function DropImageCard({
   const isCorrect = hasAnswer && currentColor === correctColor;
 
   return (
-    <div className="rounded-4xl border border-slate-200 bg-slate-50 p-4 text-center shadow-sm dark:border-white/10 dark:bg-white/5">
-      <SmartImage
-        src={imageSrc}
-        alt={imageAlt}
-        icon="🖼️"
-        label={title}
-        className="h-44 w-full rounded-3xl bg-white object-contain p-3 shadow-md"
-      />
+    <div className="flex h-full min-h-108 flex-col rounded-4xl border border-slate-200 bg-slate-50 p-4 text-center shadow-sm dark:border-white/20 dark:bg-slate-800">
+      <div className="flex h-52 w-full shrink-0 items-center justify-center overflow-hidden rounded-3xl bg-white p-4 shadow-md dark:bg-slate-900">
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          className="max-h-full max-w-full object-contain"
+        />
+      </div>
 
-      <h3 className="mt-4 text-xl font-black text-slate-900 dark:text-white">
+      <h3 className="mt-4 min-h-8 text-xl font-black text-slate-900 dark:text-white">
         {title}
       </h3>
 
       <div
-        className={`mt-4 rounded-3xl border-2 border-dashed p-4 ${
+        className={`mt-auto rounded-3xl border-2 border-dashed p-4 ${
           isCorrect
-            ? "border-green-400 bg-green-50 dark:bg-green-500/10"
+            ? "border-green-400 bg-green-50 dark:bg-green-500/20"
             : hasAnswer
-            ? "border-red-400 bg-red-50 dark:bg-red-500/10"
-            : "border-blue-300 bg-white/80 dark:border-blue-500/40 dark:bg-white/5"
+            ? "border-red-400 bg-red-50 dark:bg-red-500/20"
+            : "border-blue-300 bg-white dark:border-blue-500/40 dark:bg-slate-900"
         }`}
         onDragOver={(event) => event.preventDefault()}
         onDrop={(event) => {
@@ -1411,11 +1382,11 @@ function DropImageCard({
         }}
       >
         {hasAnswer ? (
-          <div className="rounded-2xl bg-blue-600/10 p-3 text-lg font-black text-blue-700 dark:text-blue-300">
+          <div className="rounded-2xl bg-blue-600/10 p-3 text-lg font-black text-blue-700 dark:bg-blue-500/20 dark:text-blue-100">
             {getColorArabicName(currentColor)}
           </div>
         ) : (
-          <span className="text-base font-black text-slate-500 dark:text-slate-300">
+          <span className="text-base font-black text-slate-600 dark:text-slate-200">
             اسحب اللون هنا
           </span>
         )}
@@ -1423,10 +1394,10 @@ function DropImageCard({
 
       {hasAnswer && (
         <div
-          className={`mt-3 rounded-2xl px-4 py-3 text-sm font-black ${
+          className={`mt-3 min-h-13 rounded-2xl px-4 py-3 text-sm font-black ${
             isCorrect
-              ? "bg-green-500/10 text-green-700 dark:text-green-300"
-              : "bg-red-500/10 text-red-700 dark:text-red-300"
+              ? "bg-green-50 text-green-700 dark:bg-green-500/20 dark:text-green-100"
+              : "bg-red-50 text-red-700 dark:bg-red-500/20 dark:text-red-100"
           }`}
         >
           {isCorrect
@@ -1449,8 +1420,8 @@ function ColorImageDrag({ color, used, imageSrc, alt }) {
       }}
       className={`rounded-3xl border p-4 text-center font-black shadow-sm transition ${
         used
-          ? "cursor-not-allowed border-slate-200 bg-slate-100 opacity-50 dark:border-white/10 dark:bg-white/5"
-          : "cursor-grab border-slate-200 bg-white hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-white/10"
+          ? "cursor-not-allowed border-slate-200 bg-slate-100 opacity-50 dark:border-white/20 dark:bg-slate-800"
+          : "cursor-grab border-slate-200 bg-white hover:-translate-y-1 hover:shadow-md dark:border-white/20 dark:bg-slate-900"
       }`}
     >
       {hasRealImage(imageSrc) ? (
@@ -1462,7 +1433,7 @@ function ColorImageDrag({ color, used, imageSrc, alt }) {
           className="h-28 w-full rounded-3xl object-contain p-2"
         />
       ) : (
-        <div className="grid h-28 place-items-center rounded-3xl bg-slate-50 dark:bg-white/5">
+        <div className="grid h-28 place-items-center rounded-3xl bg-slate-50 dark:bg-slate-800">
           <span
             className={`h-16 w-16 rounded-full shadow-lg ${getColorClass(
               color
@@ -1483,7 +1454,7 @@ function ColorChipDrag({ id, label, colorClass }) {
     <div
       draggable
       onDragStart={(event) => event.dataTransfer.setData("text/plain", id)}
-      className="cursor-grab rounded-3xl border border-slate-200 bg-white p-4 text-center font-black shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-white/10"
+      className="cursor-grab rounded-3xl border border-slate-200 bg-white p-4 text-center font-black shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-white/20 dark:bg-slate-900"
     >
       <span className={`mx-auto block h-10 w-10 rounded-full ${colorClass}`} />
 
@@ -1499,7 +1470,7 @@ function CategoryDrop({ title, category, colors, onDropCategory }) {
 
   return (
     <div
-      className="min-h-45 rounded-4xl border-2 border-dashed border-blue-300 bg-white/80 p-4 text-center dark:border-blue-500/40 dark:bg-white/5"
+      className="min-h-45 rounded-4xl border-2 border-dashed border-blue-300 bg-white p-4 text-center dark:border-blue-500/40 dark:bg-slate-800"
       onDragOver={(event) => event.preventDefault()}
       onDrop={(event) => {
         event.preventDefault();
@@ -1513,14 +1484,14 @@ function CategoryDrop({ title, category, colors, onDropCategory }) {
 
       <div className="mt-4 space-y-2">
         {insideColors.length === 0 ? (
-          <p className="text-sm font-black text-slate-500 dark:text-slate-300">
+          <p className="text-sm font-black text-slate-600 dark:text-slate-200">
             اسحب اللون هنا
           </p>
         ) : (
           insideColors.map((color) => (
             <div
               key={color}
-              className="rounded-2xl bg-blue-600/10 p-3 font-black text-blue-700 dark:text-blue-300"
+              className="rounded-2xl bg-blue-600/10 p-3 font-black text-blue-700 dark:bg-blue-500/20 dark:text-blue-100"
             >
               {getColorArabicName(color)}
             </div>
@@ -1555,10 +1526,10 @@ function InteractiveWheelGame({
   const done = Object.keys(answers).length === tasks.length;
 
   return (
-    <div className="mt-6 rounded-4xl bg-slate-50 p-5 dark:bg-white/5">
+    <div className="mt-6 rounded-4xl border border-slate-200 bg-slate-50 p-5 dark:border-white/20 dark:bg-slate-800">
       <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-        <div className="rounded-4xl bg-white p-5 text-center shadow-sm dark:bg-white/10">
-          <p className="text-sm font-black text-slate-500 dark:text-slate-300">
+        <div className="rounded-4xl border border-slate-200 bg-white p-5 text-center shadow-sm dark:border-white/20 dark:bg-slate-900">
+          <p className="text-sm font-black text-slate-600 dark:text-slate-300">
             السؤال الحالي
           </p>
 
@@ -1566,7 +1537,7 @@ function InteractiveWheelGame({
             {done ? "انتهت اللعبة 🎉" : currentTask?.instruction}
           </h3>
 
-          <p className="mt-3 rounded-2xl bg-blue-600/10 px-4 py-3 text-base font-black text-blue-700 dark:text-blue-300">
+          <p className="mt-3 rounded-2xl bg-blue-600/10 px-4 py-3 text-base font-black text-blue-700 dark:bg-blue-500/20 dark:text-blue-100">
             اختار اللون المناسب من الدائرة
           </p>
 
@@ -1581,7 +1552,7 @@ function InteractiveWheelGame({
                       : "bg-red-500 text-white"
                     : index === currentIndex
                     ? "bg-blue-600 text-white"
-                    : "bg-slate-200 text-slate-700"
+                    : "bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-100"
                 }`}
               >
                 {index + 1}
@@ -1597,7 +1568,7 @@ function InteractiveWheelGame({
               type="button"
               disabled={done}
               onClick={() => onChoose(color.id)}
-              className="rounded-4xl border border-white/70 bg-white p-5 text-center shadow-lg transition hover:-translate-y-1 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60 dark:border-white/10 dark:bg-white/10"
+              className="rounded-4xl border border-slate-200 bg-white p-5 text-center shadow-lg transition hover:-translate-y-1 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60 dark:border-white/20 dark:bg-slate-900"
             >
               <span
                 className={`mx-auto block h-20 w-20 rounded-full shadow-xl ${color.className}`}
@@ -1618,12 +1589,12 @@ function InteractiveWheelGame({
           return (
             <div
               key={task.key}
-              className={`rounded-2xl p-4 text-center text-sm font-black ${
+              className={`rounded-2xl border p-4 text-center text-sm font-black ${
                 !answer
-                  ? "bg-white text-slate-500 dark:bg-white/10 dark:text-slate-300"
+                  ? "border-slate-200 bg-white text-slate-600 dark:border-white/20 dark:bg-slate-900 dark:text-slate-200"
                   : isCorrect
-                  ? "bg-green-500/10 text-green-700 dark:text-green-300"
-                  : "bg-red-500/10 text-red-700 dark:text-red-300"
+                  ? "border-green-500/30 bg-green-50 text-green-700 dark:bg-green-500/20 dark:text-green-100"
+                  : "border-red-500/30 bg-red-50 text-red-700 dark:bg-red-500/20 dark:text-red-100"
               }`}
             >
               <p>{task.instruction}</p>
@@ -1651,7 +1622,7 @@ function MeaningCard({
   onChoose,
 }) {
   return (
-    <div className="mt-5 rounded-4xl bg-slate-50 p-5 dark:bg-white/5">
+    <div className="mt-5 rounded-4xl border border-slate-200 bg-slate-50 p-5 dark:border-white/20 dark:bg-slate-800">
       <div className="flex items-center gap-4">
         <span className={`h-12 w-12 rounded-full ${colorClass}`} />
 
@@ -1684,13 +1655,13 @@ function ImageMeaningCard({
   onChoose,
 }) {
   return (
-    <div className="rounded-4xl border border-slate-200 bg-slate-50 p-4 text-center shadow-sm dark:border-white/10 dark:bg-white/5">
+    <div className="rounded-4xl border border-slate-200 bg-slate-50 p-4 text-center shadow-sm dark:border-white/20 dark:bg-slate-800">
       <SmartImage
         src={imageSrc}
         alt={imageAlt}
         icon="🖼️"
         label={title}
-        className="h-44 w-full rounded-3xl bg-white object-contain p-3 shadow-md"
+        className="h-44 w-full rounded-3xl bg-white object-contain p-3 shadow-md dark:bg-slate-900"
       />
 
       <h3 className="mt-4 text-xl font-black text-slate-900 dark:text-white">
@@ -1770,9 +1741,9 @@ function DesignFixOption({
       className={`rounded-3xl border p-4 text-right shadow-sm transition hover:-translate-y-1 hover:shadow-md ${
         selected
           ? correct
-            ? "border-green-500/40 bg-green-500/10"
-            : "border-red-500/40 bg-red-500/10"
-          : "border-slate-200 bg-white dark:border-white/10 dark:bg-white/10"
+            ? "border-green-500/40 bg-green-50 dark:bg-green-500/20"
+            : "border-red-500/40 bg-red-50 dark:bg-red-500/20"
+          : "border-slate-200 bg-white dark:border-white/20 dark:bg-slate-900"
       }`}
     >
       <div className={`rounded-2xl p-4 shadow-inner ${previewBgClass}`}>
@@ -1792,7 +1763,7 @@ function DesignFixOption({
 
 function ColorSelectGroup({ title, options, selected, onChoose }) {
   return (
-    <div className="rounded-4xl bg-slate-50 p-5 dark:bg-white/5">
+    <div className="rounded-4xl border border-slate-200 bg-slate-50 p-5 dark:border-white/20 dark:bg-slate-800">
       <h3 className="text-xl font-black text-slate-900 dark:text-white">
         {title}
       </h3>
