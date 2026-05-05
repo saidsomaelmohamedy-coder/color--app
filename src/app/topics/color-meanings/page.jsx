@@ -373,35 +373,6 @@ export default function ColorMeaningsPage() {
               ))}
             </div>
           </div>
-
-          {/* Remember */}
-          <div className={sectionCard}>
-            <div className="text-center">
-              <div className="mx-auto inline-flex rounded-full bg-green-600/10 px-5 py-2 text-sm font-black text-green-700 dark:bg-green-500/20 dark:text-green-100">
-                ✅ تذكّر جيدًا
-              </div>
-
-              <h2 className="mt-4 text-3xl font-black text-slate-900 dark:text-white">
-                أهم دلالات الألوان
-              </h2>
-            </div>
-
-            <div className="mt-7 grid auto-rows-fr gap-5 md:grid-cols-3">
-              {reminderCards.map((item) => (
-                <div
-                  key={item.text}
-                  className={`reminder-card-fixed h-full rounded-3xl p-6 text-center text-xl font-black shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-lg ${item.className}`}
-                >
-                  <div className="text-4xl">{item.icon}</div>
-
-                  <h3 className="mt-3 text-2xl font-black">{item.title}</h3>
-
-                  <p className="mt-2 text-lg leading-8">{item.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Video */}
           <div className={sectionCard}>
             <div className="mb-7 text-center">

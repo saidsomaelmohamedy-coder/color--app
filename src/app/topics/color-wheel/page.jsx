@@ -24,10 +24,10 @@ export default function ColorWheelPage() {
   const wheelRef = useRef(null);
 
   const [selectedColor, setSelectedColor] = useState({
-    name: "اختاري درجة لون",
+    name: "اختار درجة لون",
     hex: "#00c2ff",
     hue: null,
-    type: "اضغطي على أي درجة داخل الدائرة",
+    type: "اضغط على أي درجة داخل الدائرة",
     description: "ستظهر هنا معلومات اللون الذي تختارينه من دائرة الألوان.",
     hasSelection: false,
     pointerX: 50,
@@ -94,11 +94,6 @@ export default function ColorWheelPage() {
       icon: "💡",
       title: "فهم العلاقات بين الألوان",
       text: "توضح كيف ترتبط الألوان ببعضها داخل دائرة الألوان.",
-    },
-    {
-      icon: "🧠",
-      title: "التعلم التفاعلي",
-      text: "الضغط على الألوان يجعل التعلم ممتعًا وأسهل للطالب.",
     },
   ];
 
@@ -470,25 +465,6 @@ export default function ColorWheelPage() {
                       />
                     )}
                   </div>
-                </div>
-
-                <div className="mt-6 rounded-3xl bg-white p-5 text-center shadow-sm dark:bg-slate-900">
-                  <p className="text-2xl font-black text-slate-900 dark:text-white">
-                    {selectedColor.hasSelection
-                      ? `اسم اللون: ${selectedColor.name}`
-                      : "اضغطي على أي درجة داخل الدائرة"}
-                  </p>
-
-                  <div
-                    className="mx-auto mt-4 h-10 w-10 rounded-full border-2 border-white shadow"
-                    style={{ backgroundColor: selectedColor.hex }}
-                  />
-
-                  <p className="mt-3 font-bold text-slate-600 dark:text-slate-200">
-                    {selectedColor.hasSelection
-                      ? `درجة اللون: ${selectedColor.hue}°`
-                      : "اختاري درجة من دائرة الألوان"}
-                  </p>
                 </div>
               </div>
 

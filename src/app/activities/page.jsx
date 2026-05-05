@@ -524,7 +524,7 @@ function LessonTwoActivity() {
     >
       <ActivityBlock number="1" icon="🎡" title="لعبة دائرة الألوان">
         <Hint>
-          اقرأ المطلوب، ثم اضغط على اللون المناسب من الدائرة. كل مرة سيظهر سؤال
+          اقرأ المطلوب، ثم اضغط على اللون المناسب . كل مرة سيظهر سؤال
           جديد.
         </Hint>
 
@@ -1538,7 +1538,7 @@ function InteractiveWheelGame({
           </h3>
 
           <p className="mt-3 rounded-2xl bg-blue-600/10 px-4 py-3 text-base font-black text-blue-700 dark:bg-blue-500/20 dark:text-blue-100">
-            اختار اللون المناسب من الدائرة
+            اختار اللون المناسب 
           </p>
 
           <div className="mt-5 flex flex-wrap justify-center gap-3">
