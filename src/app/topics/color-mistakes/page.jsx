@@ -265,24 +265,6 @@ export default function ColorMistakesPage() {
               ))}
             </div>
           </div>
-
-          {/* Intro */}
-          <div className="mistake-section-card mt-8 rounded-4xl border border-white/70 bg-white/90 p-6 text-center shadow-2xl backdrop-blur-xl dark:border-white/20 dark:bg-slate-900 md:p-8">
-            <div className="mx-auto inline-flex rounded-full bg-blue-600/10 px-5 py-2 text-sm font-black text-blue-700 dark:bg-blue-500/20 dark:text-blue-100">
-              📘 فكرة الموضوع
-            </div>
-
-            <h2 className="mt-4 text-3xl font-black text-slate-900 dark:text-white">
-              لماذا يجب أن نختار الألوان بعناية؟
-            </h2>
-
-            <p className="mx-auto mt-4 max-w-4xl text-lg font-bold leading-9 text-slate-600 dark:text-slate-200">
-              اللون الجيد يساعد الطالب على الفهم، أما اللون غير المناسب فقد يجعل
-              التصميم صعبًا أو مشتتًا. لذلك يجب أن تكون الألوان واضحة ومريحة
-              ومناسبة للمعنى.
-            </p>
-          </div>
-
           {/* Mistakes Cards */}
           <div className="mistake-section-card mt-8 rounded-4xl border border-white/70 bg-white/90 p-6 shadow-2xl backdrop-blur-xl dark:border-white/20 dark:bg-slate-900 md:p-8">
             <div className="mb-8 text-center">

@@ -301,25 +301,6 @@ export default function ColorMeaningsPage() {
               ))}
             </div>
           </div>
-
-          {/* Lesson Intro */}
-          <div className={sectionCard}>
-            <div className="text-center">
-              <div className="mx-auto inline-flex rounded-full bg-blue-600/10 px-5 py-2 text-sm font-black text-blue-700 dark:bg-blue-500/20 dark:text-blue-100">
-                📘 فكرة الموضوع
-              </div>
-
-              <h2 className="mt-4 text-3xl font-black text-slate-900 dark:text-white">
-                ماذا يعني كل لون؟
-              </h2>
-
-              <p className="mx-auto mt-4 max-w-4xl text-lg font-bold leading-9 text-slate-600 dark:text-slate-200">
-                اقرأ معنى كل لون، ثم حاول أن تربط اللون بالموقف المناسب له. هذا
-                يساعدك على اختيار الألوان الصحيحة في التصميم.
-              </p>
-            </div>
-          </div>
-
           {/* Color Cards */}
           <div className={sectionCard}>
             <div className="mb-8 text-center">

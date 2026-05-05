@@ -267,26 +267,6 @@ export default function ColorsInDesignPage() {
               ))}
             </div>
           </div>
-
-          {/* Lesson Intro */}
-          <div className={sectionCard}>
-            <div className="text-center">
-              <div className="mx-auto inline-flex rounded-full bg-violet-600/10 px-5 py-2 text-sm font-black text-violet-700 dark:bg-violet-500/20 dark:text-violet-100">
-                📘 فكرة الموضوع
-              </div>
-
-              <h2 className="mt-4 text-3xl font-black text-slate-900 dark:text-white">
-                كيف نستخدم الألوان في التصميم؟
-              </h2>
-
-              <p className="mx-auto mt-4 max-w-4xl text-lg font-bold leading-9 text-slate-600 dark:text-slate-200">
-                نختار الألوان بعناية حتى يكون التصميم جميلًا، واضحًا، ومريحًا
-                للعين. اللون المناسب يساعد الطالب على الانتباه وفهم المعلومات
-                بسهولة.
-              </p>
-            </div>
-          </div>
-
           {/* Design Rules */}
           <div className={sectionCard}>
             <div className="mb-8 text-center">
