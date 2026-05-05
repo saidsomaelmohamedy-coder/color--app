@@ -414,7 +414,7 @@ export default function WhatAreColorsPage() {
             </Link>
 
             <Link href="/activities?topic=what-are-colors" className="main-btn">
-              نشاط هذا الدرس
+              نشاط هذا الموضوع
               <span>🧩</span>
             </Link>
           </div>

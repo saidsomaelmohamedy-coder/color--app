@@ -64,7 +64,6 @@ export default function HomePage() {
             <div className="flex items-center justify-center rounded-3xl bg-white/40 p-6">
               <img
                 src="https://i.pinimg.com/736x/23/0c/7a/230c7a2ebae970e88f8b6db673df74f8.jpg"
-                alt="دليل الألوان في التصميم الجرافيكي"
                 className="h-90 w-full max-w-lg rounded-3xl object-cover shadow-lg"
               />
             </div>
