@@ -408,26 +408,17 @@ function LessonOneActivity() {
           </h3>
 
           <div className="mt-4 grid gap-4 md:grid-cols-3">
-            <ColorImageDrag
-              color="red"
-              used={Object.values(placements).includes("red")}
-              imageSrc=""
-              alt="اللون الأحمر"
-            />
+            {!Object.values(placements).includes("red") && (
+              <ColorImageDrag color="red" imageSrc="" alt="اللون الأحمر" />
+            )}
 
-            <ColorImageDrag
-              color="green"
-              used={Object.values(placements).includes("green")}
-              imageSrc=""
-              alt="اللون الأخضر"
-            />
+            {!Object.values(placements).includes("green") && (
+              <ColorImageDrag color="green" imageSrc="" alt="اللون الأخضر" />
+            )}
 
-            <ColorImageDrag
-              color="yellow"
-              used={Object.values(placements).includes("yellow")}
-              imageSrc=""
-              alt="اللون الأصفر"
-            />
+            {!Object.values(placements).includes("yellow") && (
+              <ColorImageDrag color="yellow" imageSrc="" alt="اللون الأصفر" />
+            )}
           </div>
         </div>
 
@@ -462,10 +453,10 @@ function LessonTwoActivity() {
   const [wheelAnswers, setWheelAnswers] = useState({});
 
   const [classify, setClassify] = useState({
-    red: "",
-    green: "",
-    orange: "",
-    blue: "",
+    primary: "",
+    secondary: "",
+    warm: "",
+    cool: "",
   });
 
   const firstDone = Object.keys(wheelAnswers).length === wheelTasks.length;
@@ -475,13 +466,13 @@ function LessonTwoActivity() {
   );
 
   const secondDone =
-    classify.red && classify.green && classify.orange && classify.blue;
+    classify.primary && classify.secondary && classify.warm && classify.cool;
 
   const secondCorrect =
-    classify.red === "primary" &&
-    classify.green === "secondary" &&
-    classify.orange === "warm" &&
-    classify.blue === "cool";
+    classify.primary === "red" &&
+    classify.secondary === "green" &&
+    classify.warm === "orange" &&
+    classify.cool === "blue";
 
   const answeredCount = Number(Boolean(firstDone)) + Number(Boolean(secondDone));
   const correctCount =
@@ -507,11 +498,17 @@ function LessonTwoActivity() {
     setWheelAnswers({});
   }
 
-  function dropCategory(color, category) {
-    setClassify((prev) => ({
-      ...prev,
-      [color]: category,
-    }));
+  function dropLessonTwoColor(place, color) {
+    setClassify((prev) => {
+      const next = { ...prev };
+
+      Object.keys(next).forEach((key) => {
+        if (next[key] === color) next[key] = "";
+      });
+
+      next[place] = color;
+      return next;
+    });
   }
 
   return (
@@ -524,8 +521,7 @@ function LessonTwoActivity() {
     >
       <ActivityBlock number="1" icon="🎡" title="لعبة دائرة الألوان">
         <Hint>
-          اقرأ المطلوب، ثم اضغط على اللون المناسب . كل مرة سيظهر سؤال
-          جديد.
+          اقرأ المطلوب، ثم اضغط على اللون المناسب . كل مرة سيظهر سؤال جديد.
         </Hint>
 
         <InteractiveWheelGame
@@ -548,36 +544,39 @@ function LessonTwoActivity() {
         )}
       </ActivityBlock>
 
-      <ActivityBlock number="2" icon="📦" title="نشاط تصنيف الألوان">
-        <Hint>اسحب كل لون إلى صندوقه الصحيح: أساسي – ثانوي – دافئ – بارد.</Hint>
+      <ActivityBlock number="2" icon="🧩" title="نشاط مطابقة اللون بالنوع">
+        <Hint>
+          اسحب اللون المناسب وضعه على النوع الصحيح: أساسي – ثانوي – دافئ – بارد.
+          بعد سحب اللون سيختفي من مربع الألوان المتاحة.
+        </Hint>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-4">
-          <CategoryDrop
-            title="أساسي"
-            category="primary"
-            colors={classify}
-            onDropCategory={dropCategory}
+        <div className="mt-6 grid items-stretch gap-5 md:grid-cols-4">
+          <DropColorTypeCard
+            title="لون أساسي"
+            currentColor={classify.primary}
+            correctColor="red"
+            onDropColor={(color) => dropLessonTwoColor("primary", color)}
           />
 
-          <CategoryDrop
-            title="ثانوي"
-            category="secondary"
-            colors={classify}
-            onDropCategory={dropCategory}
+          <DropColorTypeCard
+            title="لون ثانوي"
+            currentColor={classify.secondary}
+            correctColor="green"
+            onDropColor={(color) => dropLessonTwoColor("secondary", color)}
           />
 
-          <CategoryDrop
-            title="دافئ"
-            category="warm"
-            colors={classify}
-            onDropCategory={dropCategory}
+          <DropColorTypeCard
+            title="لون دافئ"
+            currentColor={classify.warm}
+            correctColor="orange"
+            onDropColor={(color) => dropLessonTwoColor("warm", color)}
           />
 
-          <CategoryDrop
-            title="بارد"
-            category="cool"
-            colors={classify}
-            onDropCategory={dropCategory}
+          <DropColorTypeCard
+            title="لون بارد"
+            currentColor={classify.cool}
+            correctColor="blue"
+            onDropColor={(color) => dropLessonTwoColor("cool", color)}
           />
         </div>
 
@@ -587,14 +586,25 @@ function LessonTwoActivity() {
           </h3>
 
           <div className="mt-4 grid gap-4 md:grid-cols-4">
-            <ColorChipDrag id="red" label="أحمر" colorClass="bg-red-500" />
-            <ColorChipDrag id="green" label="أخضر" colorClass="bg-green-500" />
-            <ColorChipDrag
-              id="orange"
-              label="برتقالي"
-              colorClass="bg-orange-500"
-            />
-            <ColorChipDrag id="blue" label="أزرق" colorClass="bg-blue-500" />
+            {!Object.values(classify).includes("red") && (
+              <ColorImageDrag color="red" imageSrc="" alt="اللون الأحمر" />
+            )}
+
+            {!Object.values(classify).includes("green") && (
+              <ColorImageDrag color="green" imageSrc="" alt="اللون الأخضر" />
+            )}
+
+            {!Object.values(classify).includes("orange") && (
+              <ColorImageDrag
+                color="orange"
+                imageSrc=""
+                alt="اللون البرتقالي"
+              />
+            )}
+
+            {!Object.values(classify).includes("blue") && (
+              <ColorImageDrag color="blue" imageSrc="" alt="اللون الأزرق" />
+            )}
           </div>
         </div>
 
@@ -603,13 +613,75 @@ function LessonTwoActivity() {
             correct={Boolean(secondCorrect)}
             text={
               secondCorrect
-                ? "ممتاز! تم تصنيف الألوان بشكل صحيح."
-                : "حاول مرة أخرى، يوجد لون في صندوق غير صحيح."
+                ? "ممتاز! كل لون في مكانه الصحيح."
+                : "حاول مرة أخرى، راجع التصحيح أسفل كل بطاقة."
             }
           />
         )}
       </ActivityBlock>
     </ActivityShell>
+  );
+}
+
+function DropColorTypeCard({
+  title,
+  currentColor,
+  correctColor,
+  onDropColor,
+}) {
+  const hasAnswer = Boolean(currentColor);
+  const isCorrect = hasAnswer && currentColor === correctColor;
+
+  return (
+    <div className="flex h-full min-h-75 flex-col rounded-4xl border border-slate-200 bg-slate-50 p-4 text-center shadow-sm dark:border-white/20 dark:bg-slate-800">
+      <div className="flex h-32 w-full shrink-0 items-center justify-center rounded-3xl bg-white p-4 shadow-md dark:bg-slate-900">
+        <h3 className="text-2xl font-black text-slate-900 dark:text-white">
+          {title}
+        </h3>
+      </div>
+
+      <div
+        className={`mt-5 rounded-3xl border-2 border-dashed p-4 ${
+          isCorrect
+            ? "border-green-400 bg-green-50 dark:bg-green-500/20"
+            : hasAnswer
+            ? "border-red-400 bg-red-50 dark:bg-red-500/20"
+            : "border-blue-300 bg-white dark:border-blue-500/40 dark:bg-slate-900"
+        }`}
+        onDragOver={(event) => event.preventDefault()}
+        onDrop={(event) => {
+          event.preventDefault();
+          const color = event.dataTransfer.getData("text/plain");
+          if (color) onDropColor(color);
+        }}
+      >
+        {hasAnswer ? (
+          <div className="rounded-2xl bg-blue-600/10 p-3 text-lg font-black text-blue-700 dark:bg-blue-500/20 dark:text-blue-100">
+            {getColorArabicName(currentColor)}
+          </div>
+        ) : (
+          <span className="text-base font-black text-slate-600 dark:text-slate-200">
+            اسحب اللون هنا
+          </span>
+        )}
+      </div>
+
+      {hasAnswer && (
+        <div
+          className={`mt-3 rounded-2xl px-4 py-3 text-sm font-black ${
+            isCorrect
+              ? "bg-green-50 text-green-700 dark:bg-green-500/20 dark:text-green-100"
+              : "bg-red-50 text-red-700 dark:bg-red-500/20 dark:text-red-100"
+          }`}
+        >
+          {isCorrect
+            ? "✅ صحيح"
+            : `❌ غير صحيح، اللون المناسب هو ${getColorArabicName(
+                correctColor
+              )}`}
+        </div>
+      )}
+    </div>
   );
 }
 
