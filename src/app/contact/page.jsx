@@ -239,13 +239,13 @@ export default function ContactPage() {
                 <span>🏠</span>
               </Link>
 
-              <Link
-                href="/topics"
-                className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-linear-to-l from-blue-600 to-violet-600 px-6 py-3 font-black text-white shadow-lg transition hover:-translate-y-1"
-              >
-                الذهاب للموضوعات
-                <span>📚</span>
-              </Link>
+             <Link
+  href="/topics"
+  className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-linear-to-l from-blue-600 to-violet-600 px-6 py-3 font-black text-white shadow-lg transition hover:-translate-y-1"
+>
+  <span className="text-white">الذهاب للموضوعات</span>
+  <span>📚</span>
+</Link>
             </div>
           </div>
         </div>
