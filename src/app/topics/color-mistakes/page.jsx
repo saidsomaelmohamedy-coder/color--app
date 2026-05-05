@@ -248,7 +248,7 @@ export default function ColorMistakesPage() {
               </h2>
             </div>
 
-            <div className="mt-7 grid gap-4 md:grid-cols-3">
+            <div className="mt-7 grid gap-6 md:grid-cols-2">
               {lessonGoals.map((goal, index) => (
                 <div
                   key={goal}

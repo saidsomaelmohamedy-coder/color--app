@@ -311,11 +311,6 @@ export default function ColorMeaningsPage() {
               <h2 className="mt-4 text-3xl font-black text-slate-900 dark:text-white">
                 معاني الألوان في التصميم
               </h2>
-
-              <p className="mx-auto mt-3 max-w-3xl font-bold leading-8 text-slate-600 dark:text-slate-200">
-                كل كارت يحتوي على صورة للون، ومعانيه، ومثال بسيط من الحياة
-                اليومية.
-              </p>
             </div>
 
             <div className="grid auto-rows-fr gap-6 md:grid-cols-2 xl:grid-cols-4">

@@ -25,7 +25,7 @@ export default function ColorWheelPage() {
 
   const [selectedColor, setSelectedColor] = useState({
     name: "اختاري درجة لون",
-    hex: "#ffffff",
+    hex: "#00c2ff",
     hue: null,
     type: "اضغطي على أي درجة داخل الدائرة",
     description: "ستظهر هنا معلومات اللون الذي تختارينه من دائرة الألوان.",
@@ -108,99 +108,107 @@ export default function ColorWheelPage() {
   const smallCard =
     "h-full rounded-[1.5rem] border border-slate-100 bg-slate-50 p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md dark:border-white/20 dark:bg-slate-800 dark:text-white";
 
-  function hslToHex(h, s, l) {
-    s /= 100;
-    l /= 100;
+  const colorStops = [
+    { angle: 0, hex: "#00c2ff", name: "الأزرق السماوي" },
+    { angle: 35, hex: "#0066ff", name: "الأزرق" },
+    { angle: 70, hex: "#5b2cff", name: "الأزرق البنفسجي" },
+    { angle: 105, hex: "#9b2cff", name: "البنفسجي" },
+    { angle: 140, hex: "#ff2fb3", name: "الوردي" },
+    { angle: 175, hex: "#ff2f4f", name: "الأحمر" },
+    { angle: 210, hex: "#ff6b00", name: "البرتقالي" },
+    { angle: 250, hex: "#ffd000", name: "الأصفر" },
+    { angle: 290, hex: "#b7ff00", name: "الأخضر المصفر" },
+    { angle: 325, hex: "#23d160", name: "الأخضر" },
+    { angle: 360, hex: "#00c2ff", name: "الأزرق السماوي" },
+  ];
 
-    const k = (n) => (n + h / 30) % 12;
-    const a = s * Math.min(l, 1 - l);
-    const f = (n) =>
-      l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+  function hexToRgb(hex) {
+    const cleanHex = hex.replace("#", "");
 
+    return {
+      r: parseInt(cleanHex.slice(0, 2), 16),
+      g: parseInt(cleanHex.slice(2, 4), 16),
+      b: parseInt(cleanHex.slice(4, 6), 16),
+    };
+  }
+
+  function rgbToHex(r, g, b) {
     const toHex = (value) =>
-      Math.round(value * 255)
-        .toString(16)
-        .padStart(2, "0");
+      Math.round(value).toString(16).padStart(2, "0");
 
-    return `#${toHex(f(0))}${toHex(f(8))}${toHex(f(4))}`;
+    return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+  }
+
+  function mixHexColors(hex1, hex2, amount) {
+    const c1 = hexToRgb(hex1);
+    const c2 = hexToRgb(hex2);
+
+    return rgbToHex(
+      c1.r + (c2.r - c1.r) * amount,
+      c1.g + (c2.g - c1.g) * amount,
+      c1.b + (c2.b - c1.b) * amount
+    );
+  }
+
+  function getNearestColorStop(angle) {
+    let nearest = colorStops[0];
+    let minDiff = 360;
+
+    colorStops.forEach((stop) => {
+      const diff = Math.abs(stop.angle - angle);
+      if (diff < minDiff) {
+        minDiff = diff;
+        nearest = stop;
+      }
+    });
+
+    return nearest;
+  }
+
+  function getExactColorFromAngle(angle, saturationRatio) {
+    const currentStopIndex = colorStops.findIndex((stop, index) => {
+      const nextStop = colorStops[index + 1];
+      return nextStop && angle >= stop.angle && angle <= nextStop.angle;
+    });
+
+    const start = colorStops[currentStopIndex];
+    const end = colorStops[currentStopIndex + 1];
+
+    const range = end.angle - start.angle;
+    const amount = range === 0 ? 0 : (angle - start.angle) / range;
+
+    const mixedColor = mixHexColors(start.hex, end.hex, amount);
+
+    const centerSoftness = Math.max(0.35, saturationRatio);
+    const finalColor = mixHexColors("#ffffff", mixedColor, centerSoftness);
+
+    return finalColor;
   }
 
   function getColorName(angle) {
-    if (angle >= 350 || angle < 25) return "الأخضر المزرق";
-    if (angle < 55) return "الأخضر";
-    if (angle < 85) return "الأخضر المصفر";
-    if (angle < 120) return "الأصفر";
-    if (angle < 155) return "الأصفر البرتقالي";
-    if (angle < 190) return "البرتقالي";
-    if (angle < 225) return "الأحمر";
-    if (angle < 260) return "الوردي";
-    if (angle < 295) return "البنفسجي";
-    if (angle < 330) return "الأزرق";
-    return "الأزرق السماوي";
+    return getNearestColorStop(angle).name;
   }
 
   function getColorType(angle) {
-    if (angle >= 85 && angle < 225) return "لون دافئ";
-    if (angle >= 225 && angle < 350) return "لون بارد";
-    return "لون طبيعي / مريح";
+    if (angle >= 140 && angle < 290) return "لون دافئ";
+    return "لون بارد";
   }
 
   function getColorDescription(angle) {
-    if (angle >= 350 || angle < 55) {
-      return "درجة هادئة ومريحة ترتبط بالطبيعة والراحة.";
-    }
-
-    if (angle < 120) {
-      return "درجة مشرقة تساعد على لفت الانتباه والشعور بالبهجة.";
-    }
-
-    if (angle < 190) {
-      return "درجة دافئة ونشيطة تعطي إحساسًا بالحركة والطاقة.";
-    }
-
-    if (angle < 225) {
-      return "درجة قوية وملفتة تساعد على التنبيه وجذب الانتباه.";
-    }
-
-    if (angle < 295) {
-      return "درجة عميقة وجذابة ترتبط بالخيال والجمال.";
-    }
-
-    return "درجة باردة تعطي إحساسًا بالهدوء والثقة والاستقرار.";
-  }
-
-  function getColorHueForAngle(angle) {
-    if (angle >= 350 || angle < 25) return 175;
-    if (angle < 55) return 135;
-    if (angle < 85) return 90;
-    if (angle < 120) return 55;
-    if (angle < 155) return 42;
-    if (angle < 190) return 28;
-    if (angle < 225) return 355;
-    if (angle < 260) return 325;
-    if (angle < 295) return 275;
-    if (angle < 330) return 225;
-    return 195;
+    if (angle < 35) return "درجة باردة تعطي إحساسًا بالهدوء والثقة.";
+    if (angle < 70) return "درجة باردة تساعد على الشعور بالاستقرار والراحة.";
+    if (angle < 105) return "درجة تجمع بين هدوء الأزرق وعمق البنفسجي.";
+    if (angle < 140) return "درجة عميقة وجذابة ترتبط بالخيال والجمال.";
+    if (angle < 175) return "درجة ناعمة ومبهجة تلفت الانتباه.";
+    if (angle < 210) return "درجة قوية وملفتة تساعد على التنبيه وجذب الانتباه.";
+    if (angle < 250) return "درجة دافئة ونشيطة تعطي إحساسًا بالحركة والطاقة.";
+    if (angle < 290) return "درجة مشرقة تساعد على الشعور بالبهجة والانتباه.";
+    if (angle < 325) return "درجة طبيعية ومريحة ترتبط بالنشاط والحياة.";
+    return "درجة هادئة ومريحة ترتبط بالطبيعة والراحة.";
   }
 
   function getColorInfo(angle, saturationRatio, pointerX, pointerY) {
-    if (saturationRatio < 0.1) {
-      return {
-        name: "الأبيض",
-        hex: "#ffffff",
-        hue: 0,
-        type: "لون محايد",
-        description: "مركز الدائرة فاتح جدًا ويعطي إحساسًا بالنقاء والهدوء.",
-        hasSelection: true,
-        pointerX,
-        pointerY,
-      };
-    }
-
-    const hue = getColorHueForAngle(angle);
-    const saturation = Math.round(40 + saturationRatio * 60);
-    const lightness = Math.round(90 - saturationRatio * 38);
-    const hex = hslToHex(hue, saturation, lightness);
+    const hex = getExactColorFromAngle(angle, saturationRatio);
 
     return {
       name: getColorName(angle),
@@ -214,24 +222,25 @@ export default function ColorWheelPage() {
     };
   }
 
-  function handleWheelClick(event) {
+  function handleWheelPointer(event) {
     if (!wheelRef.current) return;
 
     const rect = wheelRef.current.getBoundingClientRect();
 
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-
+    const size = Math.min(rect.width, rect.height);
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
+    const radius = size / 2;
+
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
 
     const dx = x - centerX;
     const dy = y - centerY;
 
     const distance = Math.sqrt(dx * dx + dy * dy);
-    const radius = rect.width / 2;
 
-    if (distance > radius * 0.97) return;
+    if (distance > radius) return;
 
     let angle = (Math.atan2(dy, dx) * 180) / Math.PI;
     angle = (angle + 90 + 360) % 360;
@@ -247,48 +256,35 @@ export default function ColorWheelPage() {
   const wheelGradient = `
     radial-gradient(
       circle at center,
-      #ffffff 0%,
-      #fffdf2 4%,
-      rgba(255,255,255,0.92) 10%,
-      rgba(255,255,255,0.72) 22%,
-      rgba(255,255,255,0.48) 36%,
-      rgba(255,255,255,0.25) 52%,
-      rgba(255,255,255,0.10) 68%,
-      rgba(255,255,255,0) 86%
+      rgba(255,255,255,0.18) 0%,
+      rgba(255,255,255,0.10) 16%,
+      rgba(255,255,255,0.04) 34%,
+      rgba(255,255,255,0) 56%
     ),
     conic-gradient(
       from 0deg,
-      #17c7c4 0deg,
-      #18c98a 28deg,
-      #32c95f 50deg,
-      #8bdd32 75deg,
-      #f3e719 105deg,
-      #ffd12c 132deg,
-      #ff9e26 160deg,
-      #ff681f 190deg,
-      #ef233c 220deg,
-      #d21a7b 250deg,
-      #922fc4 280deg,
-      #2e49c9 315deg,
-      #179bd7 342deg,
-      #17c7c4 360deg
+      #00c2ff 0deg,
+      #0066ff 35deg,
+      #5b2cff 70deg,
+      #9b2cff 105deg,
+      #ff2fb3 140deg,
+      #ff2f4f 175deg,
+      #ff6b00 210deg,
+      #ffd000 250deg,
+      #b7ff00 290deg,
+      #23d160 325deg,
+      #00c2ff 360deg
     )
   `;
 
   function ImageBox({ src, alt }) {
     return (
       <div className="group flex h-full min-h-75 items-center justify-center overflow-hidden rounded-4xl border border-white/70 bg-white/85 p-4 shadow-xl backdrop-blur-xl dark:border-white/20 dark:bg-slate-900">
-        {src ? (
-          <img
-            src={src}
-            alt={alt}
-            className="mx-auto h-auto max-h-108 w-auto max-w-full rounded-3xl object-contain shadow-md transition duration-300 group-hover:scale-105"
-          />
-        ) : (
-          <div className="flex min-h-62.5 w-full items-center justify-center rounded-3xl bg-slate-100 p-6 text-center text-lg font-black leading-8 text-slate-500 dark:bg-slate-800 dark:text-slate-200">
-            حطي هنا لينك الصورة
-          </div>
-        )}
+        <img
+          src={src}
+          alt={alt}
+          className="mx-auto h-auto max-h-108 w-auto max-w-full rounded-3xl object-contain shadow-md transition duration-300 group-hover:scale-105"
+        />
       </div>
     );
   }
@@ -328,6 +324,7 @@ export default function ColorWheelPage() {
             inset 0 0 42px rgba(255, 255, 255, 0.16),
             inset 0 0 55px rgba(0, 0, 0, 0.08);
           filter: saturate(1.22) contrast(1.06);
+          touch-action: none;
         }
 
         .smooth-color-wheel:hover {
@@ -365,7 +362,6 @@ export default function ColorWheelPage() {
         <div className="pointer-events-none absolute bottom-0 left-0 -z-10 h-80 w-80 rounded-full bg-pink-300/25 blur-3xl dark:bg-pink-500/10" />
 
         <div className="page-container">
-          {/* Hero */}
           <div className="rounded-4xl border border-white/70 bg-white/85 px-6 py-10 text-center shadow-2xl backdrop-blur-xl dark:border-white/20 dark:bg-slate-900 md:px-10">
             <div className="mx-auto inline-flex rounded-full bg-blue-600/10 px-5 py-2 text-sm font-black text-blue-700 dark:bg-blue-500/20 dark:text-blue-100">
               🎡 موضوع تفاعلي
@@ -374,7 +370,7 @@ export default function ColorWheelPage() {
             <h1 className="mx-auto mt-5 max-w-4xl text-3xl font-black leading-normal text-slate-900 dark:text-white md:text-5xl">
               دائرة الألوان
               <span className="block bg-linear-to-l from-blue-600 via-violet-600 to-pink-500 bg-clip-text text-transparent dark:from-blue-300 dark:via-violet-300 dark:to-pink-300">
-              في التصميم الجرافيكي
+                في التصميم الجرافيكي
               </span>
             </h1>
 
@@ -384,7 +380,6 @@ export default function ColorWheelPage() {
             </p>
           </div>
 
-          {/* Goals */}
           <div className={sectionCard}>
             <div className="mb-7 text-center">
               <div className="mx-auto inline-flex rounded-full bg-green-600/10 px-5 py-2 text-sm font-black text-green-700 dark:bg-green-500/20 dark:text-green-100">
@@ -413,7 +408,6 @@ export default function ColorWheelPage() {
             </div>
           </div>
 
-          {/* Definition */}
           <div className="mt-8 grid items-stretch gap-6 lg:grid-cols-2 lg:[direction:ltr]">
             <ImageBox src={colorWheelIntroImage} alt="صورة دائرة الألوان" />
 
@@ -440,7 +434,6 @@ export default function ColorWheelPage() {
             </div>
           </div>
 
-          {/* Interactive Wheel */}
           <div className={sectionCard}>
             <div className="mb-7 text-center">
               <div className="mx-auto inline-flex rounded-full bg-violet-600/10 px-5 py-2 text-sm font-black text-violet-700 dark:bg-violet-500/20 dark:text-violet-100">
@@ -448,7 +441,8 @@ export default function ColorWheelPage() {
               </div>
 
               <h2 className="mt-4 text-2xl font-black text-slate-900 dark:text-white md:text-3xl">
-                 اضغط على أي درجة لون داخل الدائرة ثم تعرف على نوع اللون              </h2>
+                اضغط على أي درجة لون داخل الدائرة ثم تعرف على نوع اللون
+              </h2>
             </div>
 
             <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:[direction:ltr]">
@@ -456,11 +450,14 @@ export default function ColorWheelPage() {
                 <div className="mx-auto max-w-125">
                   <div
                     ref={wheelRef}
-                    onClick={handleWheelClick}
+                    onPointerDown={handleWheelPointer}
+                    onPointerMove={(event) => {
+                      if (event.buttons === 1) handleWheelPointer(event);
+                    }}
                     className="smooth-color-wheel relative mx-auto aspect-square w-full cursor-pointer overflow-hidden rounded-full transition duration-300"
                     style={{ background: wheelGradient }}
                   >
-                    <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_22%,rgba(255,255,255,0.23),rgba(255,255,255,0.07)_30%,rgba(255,255,255,0)_64%)]" />
+                    <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_22%,rgba(255,255,255,0.18),rgba(255,255,255,0.06)_30%,rgba(255,255,255,0)_64%)]" />
 
                     {selectedColor.hasSelection && (
                       <div
@@ -522,7 +519,6 @@ export default function ColorWheelPage() {
             </div>
           </div>
 
-          {/* Info cards */}
           <div className={sectionCard}>
             <div className="mb-7 text-center">
               <div className="mx-auto inline-flex rounded-full bg-pink-600/10 px-5 py-2 text-sm font-black text-pink-700 dark:bg-pink-500/20 dark:text-pink-100">
@@ -541,17 +537,11 @@ export default function ColorWheelPage() {
                   className={`wheel-info-card flex h-full flex-col overflow-hidden rounded-4xl border border-white/70 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/20 ${card.bg}`}
                 >
                   <div className="wheel-info-image flex min-h-62.5 items-center justify-center bg-white/80 p-4">
-                    {card.image ? (
-                      <img
-                        src={card.image}
-                        alt={card.title}
-                        className="mx-auto h-auto max-h-65 w-auto max-w-full rounded-3xl object-contain shadow-md"
-                      />
-                    ) : (
-                      <div className="flex min-h-52 w-full items-center justify-center rounded-3xl bg-white p-6 text-center text-base font-black leading-8 text-slate-500">
-                        حطي هنا صورة {card.title}
-                      </div>
-                    )}
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      className="mx-auto h-auto max-h-65 w-auto max-w-full rounded-3xl object-contain shadow-md"
+                    />
                   </div>
 
                   <div className="wheel-info-body flex flex-1 flex-col p-6 text-right">
@@ -581,7 +571,6 @@ export default function ColorWheelPage() {
             </div>
           </div>
 
-          {/* Importance */}
           <div className={sectionCard}>
             <div className="mb-7 text-center">
               <div className="mx-auto inline-flex rounded-full bg-yellow-500/10 px-5 py-2 text-sm font-black text-yellow-700 dark:bg-yellow-500/20 dark:text-yellow-100">
@@ -614,7 +603,6 @@ export default function ColorWheelPage() {
             </div>
           </div>
 
-          {/* Video */}
           <div className={sectionCard}>
             <div className="mb-7 text-center">
               <div className="mx-auto inline-flex rounded-full bg-blue-600/10 px-5 py-2 text-sm font-black text-blue-700 dark:bg-blue-500/20 dark:text-blue-100">
@@ -626,28 +614,21 @@ export default function ColorWheelPage() {
               </h2>
 
               <p className="mx-auto mt-3 max-w-2xl font-bold leading-8 text-slate-600 dark:text-slate-200">
-                في هذا الفيديو ستتعرف على  دائرةالألوان بطريقة سهلة وواضحة.
+                في هذا الفيديو ستتعرف على دائرة الألوان بطريقة سهلة وواضحة.
               </p>
             </div>
 
-            {videoUrl ? (
-              <div className="mx-auto max-w-5xl overflow-hidden rounded-4xl border border-slate-200 bg-white p-3 shadow-xl dark:border-white/20 dark:bg-slate-800">
-                <iframe
-                  src={videoUrl}
-                  title="فيديو دائرة الألوان"
-                  className="video-like-first-lesson w-full rounded-2xl bg-black shadow-md"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            ) : (
-              <div className="mx-auto flex h-72 max-w-5xl items-center justify-center rounded-4xl bg-slate-900 p-6 text-center text-lg font-black leading-8 text-white shadow-xl md:h-115">
-                حطي لينك الفيديو بصيغة embed في المتغير videoUrl أعلى الكود
-              </div>
-            )}
+            <div className="mx-auto max-w-5xl overflow-hidden rounded-4xl border border-slate-200 bg-white p-3 shadow-xl dark:border-white/20 dark:bg-slate-800">
+              <iframe
+                src={videoUrl}
+                title="فيديو دائرة الألوان"
+                className="video-like-first-lesson w-full rounded-2xl bg-black shadow-md"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
 
-          {/* Bottom buttons */}
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link href="/topics" className="soft-btn">
               مشاهدة باقي الموضوعات
