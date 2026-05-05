@@ -374,7 +374,7 @@ export default function ColorWheelPage() {
             <h1 className="mx-auto mt-5 max-w-4xl text-3xl font-black leading-normal text-slate-900 dark:text-white md:text-5xl">
               دائرة الألوان
               <span className="block bg-linear-to-l from-blue-600 via-violet-600 to-pink-500 bg-clip-text text-transparent dark:from-blue-300 dark:via-violet-300 dark:to-pink-300">
-                بتدرجات كاملة وناعمة
+              في التصميم الجرافيكي
               </span>
             </h1>
 

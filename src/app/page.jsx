@@ -1,15 +1,33 @@
 import Link from "next/link";
-import { siteInfo, strategySteps } from "./data/colorsData";
-
 export default function HomePage() {
-  const safeStrategySteps = Array.isArray(strategySteps) ? strategySteps : [];
+  const siteDescription =
+    "موقع تعليمي يساعد الطالب على فهم الألوان ودلالتها بطريقة بسيطة وممتعة.";
+
+  const strategySteps = [
+    {
+      title: "الاكتشاف",
+      icon: "🔍",
+      description:
+        "يشاهد الطالب الصورة أو الفيديو، ويلاحظ اللون أو الموقف، ثم يكتشف المعلومة بنفسه.",
+    },
+    {
+      title: "التطبيق",
+      icon: "🧩",
+      description:
+        "يطبق الطالب ما تعلمه من خلال نشاط بسيط واختيار الإجابة الصحيحة.",
+    },
+    {
+      title: "التقويم التفاعلي",
+      icon: "✅",
+      description:
+        "يجيب الطالب عن أسئلة قصيرة ويحصل على تغذية راجعة مباشرة.",
+    },
+  ];
 
   return (
     <section className="py-10">
       <div className="page-container">
-        {/* Hero Section */}
         <div className="grid items-start gap-10 lg:grid-cols-2">
-          {/* Text Content */}
           <div className="space-y-7">
             <div className="badge w-fit">
               🎨 موقع تعليمي لذوي صعوبات التعلم
@@ -24,8 +42,7 @@ export default function HomePage() {
               </h1>
 
               <p className="mt-6 max-w-xl text-xl font-bold leading-10 text-black dark:text-white">
-                {siteInfo?.description ||
-                  "موقع تعليمي يساعد الطالب على فهم الألوان ودلالتها بطريقة بسيطة وممتعة."}
+                {siteDescription}
               </p>
             </div>
 
@@ -36,7 +53,7 @@ export default function HomePage() {
               </Link>
 
               <Link href="/topics" className="soft-btn">
-               مشاهدة الموضوعات
+                مشاهدة الموضوعات
                 <span>📚</span>
               </Link>
             </div>
@@ -47,7 +64,7 @@ export default function HomePage() {
             <div className="flex items-center justify-center rounded-3xl bg-white/40 p-6">
               <img
                 src="https://i.pinimg.com/736x/23/0c/7a/230c7a2ebae970e88f8b6db673df74f8.jpg"
-                alt="صورة الصفحة الرئيسية"
+                alt="دليل الألوان في التصميم الجرافيكي"
                 className="h-90 w-full max-w-lg rounded-3xl object-cover shadow-lg"
               />
             </div>
@@ -56,7 +73,7 @@ export default function HomePage() {
 
         {/* Strategy Cards */}
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {safeStrategySteps.map((step) => (
+          {strategySteps.map((step) => (
             <div
               key={step.title}
               className="glass rounded-3xl p-5 text-center shadow-lg transition duration-300 hover:-translate-y-1"
@@ -65,7 +82,7 @@ export default function HomePage() {
                 {step.icon}
               </div>
 
-              <h3 className="mt-4 text-lg font-black">
+              <h3 className="mt-4 text-lg font-black text-black dark:text-white">
                 {step.title}
               </h3>
 

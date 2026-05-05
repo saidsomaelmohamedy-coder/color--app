@@ -1,7 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { siteInfo } from "../data/colorsData";
+
+const siteInfo = {
+  title: "دليل الألوان في التصميم الجرافيكي",
+};
 
 const collegeLogo =
   "https://i.pinimg.com/736x/e6/b4/4e/e6b44ea9390eb96fa5f5a2bf76b52a5f.jpg";
@@ -103,7 +106,7 @@ export default function AboutPage() {
                 </p>
 
                 <h1 className="mt-3 text-3xl font-black leading-normal text-slate-950 dark:text-white md:text-5xl">
-                  {siteInfo?.title || "دليل الألوان في التصميم الجرافيكي"}
+                  {siteInfo.title}
                 </h1>
 
                 <p className="mx-auto mt-4 max-w-3xl text-base font-bold leading-8 text-slate-700 dark:text-slate-200">
@@ -257,7 +260,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Bottom Buttons - unchanged */}
+        {/* Bottom Buttons */}
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Link href="/" className="soft-btn">
             الرجوع للرئيسية
@@ -265,7 +268,7 @@ export default function AboutPage() {
           </Link>
 
           <Link href="/topics" className="main-btn">
-           الانتقال الى الموضوعات
+            الانتقال الى الموضوعات
             <span>📚</span>
           </Link>
         </div>
